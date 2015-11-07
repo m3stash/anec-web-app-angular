@@ -1,0 +1,21 @@
+{
+	"name": "webapp",
+	"version": "0.0.0",
+	"authors": [
+		"laurent duchaussoy <laurennt.duchaussoy59@gmail.com>"
+	],
+	"license": "MIT",
+	"homepage": "",
+	"ignore": [
+    	"**/.*",
+    	"node_modules",
+    	"bower_components",
+    	"test",
+    	"tests"
+	],
+	"dependencies": {
+	    "jquery": "latest",
+	    "angular": "latest",
+	    "angular-route": "latest"
+	}
+}

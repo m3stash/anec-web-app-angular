@@ -1,0 +1,28 @@
+<div class="content login">
+	<!-- <form name="formLogin" ng-submit="formConnection()"> -->
+		<div id="login">
+			<div class="block-left">
+				<div class="header">
+					<span class="title">{{_i('login.title.identExist')}}</span>
+				</div>
+				<div class="ctn-input">
+					<i class="fa fa-user"></i>
+					<input class="form-control" placeholder="{{_i('login.labelEmail')}}" type="text" name="user" ng-model="loginObj.email">
+					<i class="fa fa-lock"></i>
+					<input class="form-control" placeholder="{{_i('login.labelPwd')}}" type="password" name="pwd" ng-model="loginObj.pwd">
+					<!-- <button type="submit" class="btn btn-info ng-binding">{{_i('common.connexion')}} <i class="fa fa-chevron-right"></i><
+					/button> -->
+					<button ng-click="formConnection()" class="btn btn-info ng-binding">{{_i('common.connexion')}} <i class="fa fa-chevron-right"></i></button>
+				</div>
+			</div>
+			<div class="block-right">
+				<div class="header">
+					<span class="title">{{_i('login.IdentCreate')}}</span>
+				</div>
+				<div class="ctn-input">
+					<button class="btn btn-info ng-binding"><a href="#/createAccount">{{_i('login.creatUser')}} <i class="fa fa-plus"></i></a></button>
+				</div>
+			</div>
+		</div>
+	<!-- </form> -->
+</div>
