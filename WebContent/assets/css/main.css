@@ -21,14 +21,7 @@ html, body {width:100%; height:100%; overflow:hidden; box-sizing:border-box;}
 .content.createAccount {}
 .content.createAccount .footer {display:flex; flex-direction:row-reverse; padding:0 5%;}
 
-/* step */
-.stepContent {width:60%; overflow:hidden; margin:100px auto; padding:0 0 50px 0; background:white; border-radius:3px;}
-.stepContent .step { display:flex;}
-.stepContent .step .email.loader {display:inline-block!important;}
-.stepContent .step .ctn-step {width:100%;}
-.stepContent .step li {padding:0 3%;}
-
-/* common */
+/************ common ************/
 /* form */
 .ctn-input .flat-button.fa {float:right; height;auto; width:auto; padding:0; background:none; margin-top:3px; color:white;}
 .ctn-input .flat-input {width:calc(100% - 45px); height:50px; border-radius:0 5px 5px 0; margin-bottom:20px; border-radius:0; box-shadow:none; border:0; border-bottom:2px solid #e1e1e1;}
