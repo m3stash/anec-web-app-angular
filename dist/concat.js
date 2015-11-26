@@ -307,12 +307,12 @@ var webapp = angular.module('webapp', [
 	        templateUrl: 'assets/partials/login.html',
 	        controller: 'LoginCtrl'
 	    })
-		.otherwise({redirectTo: '/'});
+		.otherwise({redirectTo: '/login'});
 }])
 .config(['$translateProvider', function ($translateProvider) {
 		$translateProvider.preferredLanguage('fr');
 		$translateProvider.useStaticFilesLoader({
-			prefix: '/i18n/',
+			prefix: 'assets/i18n/',
 			suffix: '.json'
 		})
 }])
