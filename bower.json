@@ -16,6 +16,9 @@
 	"dependencies": {
 	    "jquery": "latest",
 	    "angular": "latest",
-	    "angular-route": "latest"
+	    "angular-route": "latest",
+			"angular-sanitize": "latest",
+			"angular-translate": "latest",
+			"angular-translate-loader-static-files": "latest"
 	}
 }

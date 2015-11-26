@@ -1,6 +1,8 @@
 'use strict';
 var webapp = angular.module('webapp', [
-  'ngRoute'
+  'ngRoute', 'ngSanitize',
+  // 3rd party modules.
+  'pascalprecht.translate'
 ])
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider
@@ -12,7 +14,14 @@ var webapp = angular.module('webapp', [
 	        templateUrl: 'assets/partials/login.html',
 	        controller: 'LoginCtrl'
 	    })
-		.otherwise({redirectTo: '/'});
+		.otherwise({redirectTo: '/login'});
+}])
+.config(['$translateProvider', function ($translateProvider) {
+		$translateProvider.preferredLanguage('fr');
+		$translateProvider.useStaticFilesLoader({
+			prefix: 'assets/i18n/',
+			suffix: '.json'
+		})
 }])
 .run(function() {
     console.log("app run");
