@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     jshint: {
-      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+      files: ['gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
       options: {
         globals: {
           jQuery: true
@@ -16,14 +16,14 @@ module.exports = function(grunt) {
   	  },
   	  dist: {
   	    // the files to concatenate
-  	    src: ['WebContent/assets/javascript/**/*.js'],
+  	    src: ['webContent/assets/javascript/**/*.js'],
   	    // the location of the resulting JS file
   	    dest: 'dist/concat.js'
   	  }
   	},
   	wiredep: {
   	  task: {
-  	    src: ['WebContent/index.html'],
+  	    src: ['webContent/index.html'],
   	  },
   	  devDependencies: true
   	},
