@@ -16,9 +16,9 @@ module.exports = function(grunt) {
   	  },
   	  dist: {
   	    // the files to concatenate
-  	    src: ['wwwebContent/assets/javascript/**/*.js'],
+  	    src: ['webContent/assets/javascript/**/*.js'],
   	    // the location of the resulting JS file
-  	    dest: 'dist/concat.js'
+  	    dest: 'webContent/dist/concat.js'
   	  }
   	},
   	wiredep: {
@@ -38,6 +38,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-wiredep');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['jshint','concat','wiredep']);
+grunt.registerTask('default', ['jshint','concat','wiredep']);
+  //grunt.registerTask('default', ['jshint','concat','wiredep']);
 
 };
