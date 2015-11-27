@@ -22,6 +22,8 @@ var webapp = angular.module('webapp', [
 			prefix: 'assets/i18n/',
 			suffix: '.json'
 		})
+    // echape les failles xss possilbles
+    $translateProvider.useSanitizeValueStrategy('escape');
 }])
 .run(function() {
     console.log("app run");
