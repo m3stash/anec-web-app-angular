@@ -1,27 +1,17 @@
-<div class="content login">
+<div class="content login" login>
 	<!-- <form name="formLogin" ng-submit="formConnection()"> -->
 		<div id="login">
-			<div class="block-left">
-				<div class="header">
-					<span class="title">{{_i('login.title.identExist')}}</span>
-				</div>
-				<div class="ctn-input">
-					<i class="fa fa-user"></i>
-					<input class="form-control" placeholder="{{'login.labelEmail' | translate}}" type="text" name="user" ng-model="loginObj.email">
-					<i class="fa fa-lock"></i>
-					<input class="form-control" placeholder="{{'login.labelPwd' | translate}}" type="password" name="pwd" ng-model="loginObj.pwd">
-					<!-- <button type="submit" class="btn btn-info ng-binding">{{_i('common.connexion')}} <i class="fa fa-chevron-right"></i><
-					/button> -->
-					<button ng-click="formConnection()" class="btn btn-info ng-binding">{{'common.connexion' | translate}} <i class="fa fa-chevron-right"></i></button>
-				</div>
+			<div class="header">
+				<span class="title">{{'login.identify' | translate}} </span>
 			</div>
-			<div class="block-right">
-				<div class="header">
-					<span class="title">{{'login.IdentCreate' | translate}}</span>
-				</div>
-				<div class="ctn-input">
-					<button class="btn btn-info ng-binding"><a href="#/createAccount">{{'login.creatUser' | translate}} <i class="fa fa-plus"></i></a></button>
-				</div>
+			<div class="ctn-input">
+				<i class="fa fa-user"></i>
+				<input class="form-control" placeholder="{{'login.login' | translate}}" type="text" name="user" ng-model="loginCtrl.loginObj.login">
+				<i class="fa fa-lock"></i>
+				<input class="form-control" placeholder="{{'login.password' | translate}}" type="password" name="pwd" ng-model="loginCtrl.loginObj.password">
+				<!-- <button type="submit" class="btn btn-info ng-binding">{{_i('common.connexion')}} <i class="fa fa-chevron-right"></i><
+				/button> -->
+				<button ng-click="loginCtrl.loginForm()" class="btn btn-info ng-binding">{{'common.connexion' | translate}} <i class="fa fa-chevron-right"></i></button>
 			</div>
 		</div>
 	<!-- </form> -->

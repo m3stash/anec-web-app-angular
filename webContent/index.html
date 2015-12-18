@@ -1,26 +1,32 @@
 <!doctype html>
 <html ng-app="webapp">
 	<head>
-    	<title>webapp</title>
-			<!-- css -->
-			<link rel="stylesheet" href="assets/css/reset.css">
-			<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-			<link rel="stylesheet" href="assets/css/main.css">
-			<link rel="stylesheet" href="assets/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
-    	<!-- bower:js -->
-    	<script src="assets/javascript/bower_components/jquery/dist/jquery.js"></script>
-    	<script src="assets/javascript/bower_components/angular/angular.js"></script>
-    	<script src="assets/javascript/bower_components/angular-route/angular-route.js"></script>
-    	<script src="assets/javascript/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    	<script src="assets/javascript/bower_components/angular-translate/angular-translate.js"></script>
-    	<script src="assets/javascript/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-    	<!-- endbower -->
+		<title>webapp</title>
+		<!-- css -->
+		<link rel="stylesheet" href="assets/css/reset.css">
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/main.css">
+		<link rel="stylesheet" href="assets/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
+    <!-- bower:js -->
+    <script src="assets/javascript/bower_components/jquery/dist/jquery.js"></script>
+    <script src="assets/javascript/bower_components/angular/angular.js"></script>
+    <script src="assets/javascript/bower_components/angular-route/angular-route.js"></script>
+    <script src="assets/javascript/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="assets/javascript/bower_components/angular-translate/angular-translate.js"></script>
+    <script src="assets/javascript/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <!-- endbower -->
 		<script src="assets/javascript/app.js"></script>
+		<script src="assets/javascript/directives/common_dir.js"></script>
+		<!-- factory -->
+		<script src="assets/javascript/services/http-interceptor.js"></script>
 		<!-- controllers -->
 		<script src="assets/javascript/controllers/mainCtrl.js"></script>
-		<script src="assets/javascript/controllers/loginCtrl.js"></script>
 	</head>
 	<body>
+		<div id="topMenu" menu-top>
+			{{menuTopCtrl.firstname}}
+			{{menuTopCtrl.lastName}}
+		</div>
 		<div ng-view></div>
 	</body>
 </html>

@@ -1,20 +1,19 @@
 'use strict';
 var webapp = angular.module('webapp', [
-  'ngRoute', 'ngSanitize',
+  'ngRoute', 'ngSanitize', 'httpInterceptor',
   // 3rd party modules.
-  'pascalprecht.translate'
+  'pascalprecht.translate',
+  'directives'
 ])
 .config(['$routeProvider', function($routeProvider) {
-	$routeProvider
-		.when('/home', {
-	        templateUrl: 'assets/partials/home.html',
-	        controller: 'MainCtrl'
-	    })
-	    .when('/login', {
-	        templateUrl: 'assets/partials/login.html',
-	        controller: 'LoginCtrl'
-	    })
-		.otherwise({redirectTo: '/login'});
+  $routeProvider
+	  .when('/login', {
+	      templateUrl: 'assets/partials/login.html'
+	  })
+    .when('/main', {
+	      templateUrl: 'assets/partials/main.html'
+	  })
+    .otherwise({redirectTo: '/login'});
 }])
 .config(['$translateProvider', function ($translateProvider) {
 		$translateProvider.preferredLanguage('fr');
@@ -26,5 +25,5 @@ var webapp = angular.module('webapp', [
     $translateProvider.useSanitizeValueStrategy('escape');
 }])
 .run(function() {
-    console.log("app run");
+    //console.log("app run");
 });

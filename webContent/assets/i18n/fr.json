@@ -1,8 +1,8 @@
 
 {
-    "login.labelEmail": "Login",
-    "login.labelPwd": "Password",
-    "login.IdentCreate": "M'identifier",
-    "login.creatUser": "Creer un compte",
-    "common.connexion": "Connexion"
+    "common.connexion": "Connexion",
+    "login.login": "Login",
+    "login.password": "Numéro adhérent",
+    "login.identify": "M'identifier"
+
 }
