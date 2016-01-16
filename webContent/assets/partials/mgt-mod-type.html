@@ -1,0 +1,23 @@
+<div class="content mgt-mod-type col-md-12" mgt-mod-type>
+  <div class="col-md-3">
+    <label for="moduleSel">{{'mgtModType.form.moduleSel' | translate}}</label>
+    <select ng-change="mgtModTypeCtrl.loadGridData(mgtModTypeCtrl.modObj.modulesList)" id="moduleSel" class="form-control"
+      ng-model="mgtModTypeCtrl.modObj.modulesList" required="true" tabindex="1">
+      <option value="">{{'common.select.defaultVal' | translate}}</option>
+      <option ng-repeat="option in mgtModTypeCtrl.modulesOptions" value="{{option.id}}">{{option.name}}</option>
+    </select>
+  </div>
+  <div class="header-grid">
+    <div class="col-md-3">
+      <button ng-click="mgtModTypeCtrl.createType()" type="button" class="btn btn-default
+        btn-block col-lg-3" tabindex="2">{{'button.add-mod-type' | translate}}</button>
+    </div>
+    <div class="col-md-3">
+      <input class="form-control" placeholder="{{'common.placeholder.search' | translate}}"
+        type="text" ng-model="mgtModTypeCtrl.gridOptions.quickFilterText" tabindex="3"/>
+    </div>
+  </div>
+  <div class="col-md-12 ctnGrid">
+    <div ag-grid="mgtModTypeCtrl.gridOptions" class="ag-fresh" style="height: 100%;"></div>
+  </div>
+</div>

@@ -19,6 +19,10 @@
 	    "angular-route": "latest",
 			"angular-sanitize": "latest",
 			"angular-translate": "latest",
-			"angular-translate-loader-static-files": "latest"
+			"angular-translate-loader-static-files": "latest",
+			"ag-grid": "latest",
+			"angular-bootstrap": "latest",
+			"Bootflat": "latest",
+			"bootstrap": "latest"
 	}
 }

@@ -4,9 +4,11 @@
 		<title>webapp</title>
 		<!-- css -->
 		<link rel="stylesheet" href="assets/css/reset.css">
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		<link rel="stylesheet" href="assets/css/main.css">
+		<link rel="stylesheet" href="assets/css/bootstrap.css">
+		<link rel="stylesheet" href="assets/javascript/bower_components/Bootflat/bootflat/css/bootflat.min.css">
+		<link rel="stylesheet" href="assets/css/ag-grid.css">
 		<link rel="stylesheet" href="assets/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/main.css">
     <!-- bower:js -->
     <script src="assets/javascript/bower_components/jquery/dist/jquery.js"></script>
     <script src="assets/javascript/bower_components/angular/angular.js"></script>
@@ -14,19 +16,27 @@
     <script src="assets/javascript/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="assets/javascript/bower_components/angular-translate/angular-translate.js"></script>
     <script src="assets/javascript/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="assets/javascript/bower_components/ag-grid/dist/ag-grid.js"></script>
+    <script src="assets/javascript/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="assets/javascript/bower_components/Bootflat/bootflat/js/icheck.min.js"></script>
+    <script src="assets/javascript/bower_components/Bootflat/bootflat/js/jquery.fs.selecter.min.js"></script>
+    <script src="assets/javascript/bower_components/Bootflat/bootflat/js/jquery.fs.stepper.min.js"></script>
+    <script src="assets/javascript/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
 		<script src="assets/javascript/app.js"></script>
 		<script src="assets/javascript/directives/common_dir.js"></script>
 		<!-- factory -->
-		<script src="assets/javascript/services/http-interceptor.js"></script>
+		<script src="assets/javascript/factory/http-interceptor.js"></script>
+		<script src="assets/javascript/factory/ag-grid_conf.js"></script>
+		<script src="assets/javascript/factory/global-factory.js"></script>
 		<!-- controllers -->
 		<script src="assets/javascript/controllers/mainCtrl.js"></script>
 	</head>
-	<body>
+	<body class="container">
 		<div id="topMenu" menu-top>
 			{{menuTopCtrl.firstname}}
 			{{menuTopCtrl.lastName}}
 		</div>
-		<div ng-view></div>
+		<div id="viewContent" ng-view class="row"></div>
 	</body>
 </html>

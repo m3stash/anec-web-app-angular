@@ -1,6 +1,6 @@
 html, body {width:100%; height:100%; box-sizing:border-box;}
-.container {width:100%; height:100%; margin:0; padding:0; background:#F0F0F2;}
-.content {width:100%; height:100%; overflow-x:hidden; overflow-y:auto; }
+/*.container {width:100%; height:100%; margin:0; padding:0; background:#F0F0F2;}*/
+.content {width:100%; height:100%; /*overflow-x:hidden; overflow-y:auto; */}
 
 /* login */
 #login {overflow:hidden; width:600px; color:white; margin:100px auto; padding:0 0 50px 0; background:white; border-radius:3px;}
@@ -40,3 +40,24 @@ html, body {width:100%; height:100%; box-sizing:border-box;}
 button.btn-info {background:#1CBBFF; float:right;}
 button.fa {height:50px; text-align:left; background: #1CBBFF;}
 button.fa i.fa{float:right; width:auto; padding:0; background:none; margin-top:2px; color:white; margin-left:25px;}
+
+/* surchage ag-grid */
+.ag-header-container .checkboxSel .ag-header-cell-menu-button {display: none;}
+
+#topMenu {height:20px;}
+#viewContent {height: calc(100% - 20px);}
+
+.content .ctnGrid {height:100%;}
+
+/* surcharge css ag-grid */
+.ag-fresh .ag-cell-focus, .ag-fresh .ag-cell-no-focus {border:0; outline:none;}
+.ag-fresh .ag-header-cell {border:1px solid transparent; background:none;}
+.ag-fresh .ag-header-container {background:none;}
+.ag-fresh .ag-body {background:none;}
+.ag-fresh .ag-header-cell-label {padding:0;}
+.ag-fresh .ag-header-container {border-bottom:2px solid #ddd;}
+.ag-fresh .ag-root {border:0;}
+.ag-fresh .ag-cell-no-focus {border:0;}
+.ag-fresh .ag-body .ag-row-odd, .ag-fresh .ag-body .ag-row-even {background:none; border-top:1px solid #ddd;}
+.ag-fresh .ag-body .ag-row-even.ag-row-level-0:first-child {border-top:0;}
+.ag-fresh .ag-row-selected {background-color:#f9f9f9!important;}

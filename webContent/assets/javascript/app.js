@@ -3,16 +3,23 @@ var webapp = angular.module('webapp', [
   'ngRoute', 'ngSanitize', 'httpInterceptor',
   // 3rd party modules.
   'pascalprecht.translate',
-  'directives'
+  'directives',
+  'agGrid'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
 	  .when('/login', {
-	      templateUrl: 'assets/partials/login.html'
+	    templateUrl: 'assets/partials/login.html'
 	  })
     .when('/main', {
-	      templateUrl: 'assets/partials/main.html'
+	     templateUrl: 'assets/partials/main.html'
 	  })
+    .when('/modulesByDistrict', {
+      templateUrl: 'assets/partials/modulesByDistrict.html'
+    })
+    .when('/create_module_type', {
+      templateUrl: 'assets/partials/mgt-mod-type.html'
+    })
     .otherwise({redirectTo: '/login'});
 }])
 .config(['$translateProvider', function ($translateProvider) {
@@ -24,6 +31,6 @@ var webapp = angular.module('webapp', [
     // echape les failles xss possilbles
     $translateProvider.useSanitizeValueStrategy('escape');
 }])
-.run(function() {
+.run(function(glbFac, $rootScope) {
     //console.log("app run");
 });

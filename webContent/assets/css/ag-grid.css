@@ -1,0 +1,531 @@
+ag-grid-ng2 {
+  display: inline-block;
+}
+.ag-root {
+  font-size: 14px;
+  cursor: default;
+/* set to relative, so absolute popups appear relative to this */
+  position: relative;
+/* disable user mouse selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+/* was getting some 'should be there' scrolls, this sorts it out */
+  overflow: hidden;
+}
+.ag-no-scrolls {
+  white-space: nowrap;
+  display: inline-block;
+}
+.ag-scrolls {
+  height: 100%;
+}
+.ag-popup-backdrop {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+.ag-header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+}
+.ag-pinned-header {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  height: 100%;
+}
+.ag-header-viewport {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  height: 100%;
+}
+.ag-scrolls .ag-header-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  white-space: nowrap;
+  height: 100%;
+}
+.ag-no-scrolls .ag-header-container {
+  white-space: nowrap;
+}
+.ag-header-cell {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: bottom;
+  text-align: center;
+  display: inline-block;
+}
+.ag-header-cell-grouped {
+  height: 50%;
+}
+.ag-header-cell-not-grouped {
+  height: 100%;
+}
+.ag-header-group {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 100%;
+}
+.ag-header-group-cell {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+  height: 50%;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ag-header-group-cell-label {
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ag-header-cell-label {
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ag-header-cell-resize {
+  height: 100%;
+  width: 4px;
+  float: right;
+  cursor: col-resize;
+}
+.ag-header-cell-menu-button {
+  float: right;
+}
+.ag-overlay-panel {
+  display: table;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.ag-overlay-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.ag-body {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ag-floating-top {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.ag-pinned-floating-top {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+.ag-floating-top-viewport {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  height: 100%;
+}
+.ag-floating-top-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  white-space: nowrap;
+}
+.ag-floating-bottom {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.ag-pinned-floating-bottom {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+.ag-floating-bottom-viewport {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  height: 100%;
+}
+.ag-floating-bottom-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  white-space: nowrap;
+}
+.ag-pinned-cols-viewport {
+  float: left;
+  position: absolute;
+  overflow: hidden;
+}
+.ag-pinned-cols-container {
+  display: inline-block;
+  position: relative;
+}
+.ag-body-viewport-wrapper {
+  height: 100%;
+}
+.ag-body-viewport {
+  overflow: auto;
+  height: 100%;
+}
+.ag-scrolls .ag-body-container {
+  position: relative;
+  display: inline-block;
+}
+.ag-scrolls .ag-row {
+  white-space: nowrap;
+  position: absolute;
+  width: 100%;
+}
+.agile-gird-row:hover {
+  background-color: #f0f8ff;
+}
+.ag-cell {
+  display: inline-block;
+  white-space: nowrap;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  float: left;
+}
+.ag-group-cell-entire-row {
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ag-footer-cell-entire-row {
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ag-large .ag-root {
+  font-size: 20px;
+}
+.ag-filter {
+  position: absolute;
+  z-index: 100;
+}
+.ag-filter-list-viewport {
+  overflow-x: auto;
+  height: 200px;
+  width: 200px;
+}
+.ag-filter-list-container {
+  position: relative;
+  overflow: hidden;
+}
+.ag-filter-item {
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+}
+.ag-filter-filter {
+  width: 170px;
+  margin: 4px;
+}
+.ag-filter-select {
+  width: 110px;
+  margin: 4px 4px 0px 4px;
+}
+.ag-no-vertical-scroll .ag-scrolls {
+  height: unset;
+}
+.ag-no-vertical-scroll .ag-body {
+  height: unset;
+}
+.ag-no-vertical-scroll .ag-body-viewport-wrapper {
+  height: unset;
+}
+.ag-no-vertical-scroll .ag-body-viewport {
+  height: unset;
+}
+.ag-list-selection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+.ag-tool-panel-container {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  width: 200px;
+}
+
+
+.ag-fresh .ag-root {
+  border: 1px solid #808080;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.ag-fresh .ag-cell {
+  padding: 2px;
+}
+.ag-fresh .ag-cell-focus {
+  border: 1px solid #a9a9a9;
+}
+.ag-fresh .ag-cell-no-focus {
+  border-right: 1px dotted #808080;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+.ag-fresh .ag-pinned-header {
+  background: -webkit-linear-gradient(#fff, #d3d3d3);
+  background: -moz-linear-gradient(#fff, #d3d3d3);
+  background: -o-linear-gradient(#fff, #d3d3d3);
+  background: -ms-linear-gradient(#fff, #d3d3d3);
+  background: linear-gradient(#fff, #d3d3d3);
+  border-bottom: 1px solid #808080;
+}
+.ag-fresh .ag-header-container {
+  background: -webkit-linear-gradient(#fff, #d3d3d3);
+  background: -moz-linear-gradient(#fff, #d3d3d3);
+  background: -o-linear-gradient(#fff, #d3d3d3);
+  background: -ms-linear-gradient(#fff, #d3d3d3);
+  background: linear-gradient(#fff, #d3d3d3);
+  border-bottom: 1px solid #808080;
+}
+.ag-fresh .ag-header-cell {
+  border-right: 1px solid #808080;
+}
+.ag-fresh .ag-header-group-cell {
+  border-right: 1px solid #808080;
+}
+.ag-fresh .ag-header-group-cell-with-group {
+  border-bottom: 1px solid #808080;
+}
+.ag-fresh .ag-header-cell-label {
+  padding: 4px 2px 4px 2px;
+}
+.ag-fresh .ag-header-cell-text {
+  padding-left: 2px;
+}
+.ag-fresh .ag-header-group-cell-label {
+  padding: 4px;
+  font-weight: bold;
+}
+.ag-fresh .ag-header-group-text {
+  margin-right: 2px;
+}
+.ag-fresh .ag-header-cell-menu-button {
+  padding: 2px;
+  margin-top: 4px;
+  border: 1px solid transparent;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box; /* When using bootstrap, box-sizing was set to 'border-box' */
+}
+.ag-fresh .ag-header-cell-menu-button:hover {
+  border: 1px solid #000;
+}
+.ag-fresh .ag-header-icon {
+  color: #800000;
+}
+.ag-fresh .ag-row-selected {
+  background-color: #b0e0e6 !important;
+}
+.ag-fresh .ag-body .ag-row-odd {
+  background-color: #f6f6f6;
+}
+.ag-fresh .ag-body .ag-row-even {
+  background-color: #fff;
+}
+.ag-fresh .ag-floating-top .ag-row {
+  background-color: #f0f0f0;
+}
+.ag-fresh .ag-floating-bottom .ag-row {
+  background-color: #f0f0f0;
+}
+.ag-fresh .ag-overlay-loading-wrapper {
+  background-color: rgba(255,255,255,0.5);
+}
+.ag-fresh .ag-overlay-loading-center {
+  background-color: #fff;
+  border: 1px solid #a9a9a9;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.ag-fresh .ag-overlay-no-rows-center {
+  background-color: #fff;
+  border: 1px solid #a9a9a9;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.ag-fresh .ag-body {
+  background-color: #fafafa;
+}
+.ag-fresh .ag-group-cell-entire-row {
+  background-color: #aaa;
+  padding: 4px;
+}
+.ag-fresh .ag-footer-cell-entire-row {
+  background-color: #aaa;
+  padding: 4px;
+}
+.ag-fresh .ag-group-cell {
+  font-style: italic;
+}
+.ag-fresh .ag-group-expand {
+  padding-right: 2px;
+}
+.ag-fresh .ag-footer-cell {
+  font-style: italic;
+}
+.ag-fresh .ag-filter-checkbox {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+.ag-fresh .ag-filter-header-container {
+  border-bottom: 1px solid #d3d3d3;
+}
+.ag-fresh .ag-filter-apply-panel {
+  border-top: 1px solid #d3d3d3;
+  padding: 2px;
+}
+.ag-fresh .ag-filter {
+  border: 1px solid #000;
+  background-color: #f0f0f0;
+}
+.ag-fresh .ag-filter-value {
+  margin-left: 4px;
+}
+.ag-fresh .ag-selection-checkbox {
+  margin-left: 4px;
+}
+.ag-fresh .ag-paging-panel {
+  padding: 4px;
+}
+.ag-fresh .ag-paging-button {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.ag-fresh .ag-paging-row-summary-panel {
+  display: inline-block;
+  width: 300px;
+}
+.ag-fresh .ag-column-not-visible {
+  opacity: 0.75;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  filter: alpha(opacity=75);
+}
+.ag-fresh .ag-not-dragging {
+  border: 1px solid transparent;
+}
+.ag-fresh .ag-drop-target-above {
+  border-top: 5px solid #a9a9a9;
+}
+.ag-fresh .ag-drop-target-below {
+  border-bottom: 5px solid #a9a9a9;
+}
+.ag-fresh .ag-dragging {
+  border: 1px dotted #a9a9a9;
+}
+.ag-fresh .ag-list-item-selected {
+  color: #f0f0f0;
+}
+.ag-fresh .ag-list-item-not-selected {
+  font-style: italic;
+  color: #a0a0a0;
+}
+.ag-fresh .ag-tool-panel-container {
+  background-color: #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #a9a9a9;
+  padding: 4px;
+}
+.ag-fresh .ag-list-selection {
+  background-color: #fff;
+  border: 1px solid #a9a9a9;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ag-fresh .ag-popup-list .ag-list-item:hover {
+  background-color: #add8e6;
+}
+.ag-fresh .ag-visible-icons {
+  padding-left: 2px;
+  padding-right: 2px;
+}

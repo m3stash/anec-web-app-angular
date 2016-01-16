@@ -1,8 +1,14 @@
 
 {
     "common.connexion": "Connexion",
+    "common.select.defaultVal": "choisir une option",
+    "common.placeholder.search": "Rechercher par...",
+    "button.add-mod-type": "Ajouter un type",
     "login.login": "Login",
     "login.password": "Numéro adhérent",
-    "login.identify": "M'identifier"
+    "login.identify": "M'identifier",
+    "mgtModType.headerGrid.id": "id",
+    "mgtModType.headerGrid.name": "module type",
+    "mgtModType.form.moduleSel": "selectionnez un module"
 
 }

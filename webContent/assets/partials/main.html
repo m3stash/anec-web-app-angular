@@ -1,9 +1,11 @@
 <div class="content main" main>
   <ul>
     <li contracts ng-click="contractsCtrl.send()"><a>create contract</a></li>
+    <li contracts><a ng-href="#/create_module_type">créer module type</a></li>
+    <li contracts><a ng-href="#/modulesByDistrict">modulesByDistrict</a></li>
   </ul>
   <div style = margin-top:30px;>
-    <ul ng-repeat="list in mainCtrl.modules">
+    <!-- <ul ng-repeat="list in mainCtrl.modules">
       <li style:"width:50px; height:50px; border:1px solid #black; margin:10px; padding:10px;">
         <span>{{list.id}}<span>
         <ul ng-repeat="types in list">
@@ -11,6 +13,6 @@
           <li>{{types.id}}</li>
         </ul>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </div>
