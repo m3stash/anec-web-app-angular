@@ -396,7 +396,7 @@ ag-grid-ng2 {
   border: 1px solid #000;
 }
 .ag-fresh .ag-header-icon {
-  color: #800000;
+  /*color: #800000;*/
 }
 .ag-fresh .ag-row-selected {
   background-color: #b0e0e6 !important;

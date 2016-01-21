@@ -2,13 +2,16 @@
 <html ng-app="webapp">
 	<head>
 		<title>webapp</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="shortcut icon" href="assets/images/favicon.png">
 		<!-- css -->
 		<link rel="stylesheet" href="assets/css/reset.css">
 		<link rel="stylesheet" href="assets/css/bootstrap.css">
-		<link rel="stylesheet" href="assets/javascript/bower_components/Bootflat/bootflat/css/bootflat.min.css">
 		<link rel="stylesheet" href="assets/css/ag-grid.css">
 		<link rel="stylesheet" href="assets/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/bootstrapOverload.css">
 		<link rel="stylesheet" href="assets/css/main.css">
+		<link rel="stylesheet" href="assets/css/responsive.css">
     <!-- bower:js -->
     <script src="assets/javascript/bower_components/jquery/dist/jquery.js"></script>
     <script src="assets/javascript/bower_components/angular/angular.js"></script>
@@ -18,9 +21,6 @@
     <script src="assets/javascript/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <script src="assets/javascript/bower_components/ag-grid/dist/ag-grid.js"></script>
     <script src="assets/javascript/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="assets/javascript/bower_components/Bootflat/bootflat/js/icheck.min.js"></script>
-    <script src="assets/javascript/bower_components/Bootflat/bootflat/js/jquery.fs.selecter.min.js"></script>
-    <script src="assets/javascript/bower_components/Bootflat/bootflat/js/jquery.fs.stepper.min.js"></script>
     <script src="assets/javascript/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
 		<script src="assets/javascript/app.js"></script>
@@ -31,12 +31,13 @@
 		<script src="assets/javascript/factory/global-factory.js"></script>
 		<!-- controllers -->
 		<script src="assets/javascript/controllers/mainCtrl.js"></script>
+		<script src="assets/javascript/controllers/mgt-module-type-ctrl.js"></script>
+		<!-- modales -->
+		<script src="assets/javascript/controllers/modales/modalAddModTypeCtrl.js"></script>
 	</head>
-	<body class="container">
-		<div id="topMenu" menu-top>
-			{{menuTopCtrl.firstname}}
-			{{menuTopCtrl.lastName}}
-		</div>
-		<div id="viewContent" ng-view class="row"></div>
+	<body>
+		<top-menu></top-menu>
+		<nav-menu></nav-menu>
+		<div id="viewContent" class="container" ng-view></div>
 	</body>
 </html>

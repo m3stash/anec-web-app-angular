@@ -1,0 +1,13 @@
+@media (max-width: 991px){
+
+}
+
+@media (max-width: 500px){
+  .nav-menu {background:#eff3f8;padding:20px 0 10px 0; height:auto;}
+  .nav-menu ul li {border-bottom: 1px solid #F0F0F0; float:none; }
+  .nav-menu ul li a {background: white; color: #666!important;}
+  .nav-menu ul li a .arrow{display:inline-block;}
+  .top-menu {height:auto; padding-bottom:10px;}
+  .top-menu .menu-toggle {display:block;}
+  .top-menu .top-menu-right {clear:right;}
+}

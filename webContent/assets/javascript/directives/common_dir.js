@@ -157,99 +157,59 @@ angular.module('directives', [])
     controllerAs:"modulesByDistrictCtrl"
   };
 })
-.directive('mgtModType', function($http, $timeout, agGridConf, $filter, glbFac) {
+.directive('topMenu', function() {
+  return {
+    restrict:'E',
+    replace: true,
+    controller : function(){
+    },
+    templateUrl: 'assets/partials/templates/top-menu.html',
+    link: function(scope, ele, attr, ctrl){
+
+    }
+  }
+})
+.directive('navMenu', function() {
+  return {
+    restrict:'E',
+    replace: true,
+    controller : function(){
+    },
+    templateUrl: 'assets/partials/templates/nav-menu.html',
+    link: function(scope, ele, attr, ctrl){
+
+    }
+  }
+})
+.directive('toggleMenu', function() {
   return {
     restrict:'A',
-    controller : function(){
-      var thiz = this;
-      var token = localStorage.getItem('token');
-      thiz.modObj = {};
-
-      //get data from module type
-      $http({
-        method: 'get',
-        url: '/rest-api/modules',
-        headers: {
-          "Authorization": "Bearer "+token
-        }
-      }).then(function(res){
-        thiz.modulesOptions = res.data.modulesList;
-      }, function (error) {
-        //console.log('Error module');
+    link: function(scope, ele, attr, ctrl){
+      $(ele).on('click', function(){
+        $('.nav-menu').slideToggle('slow');
       });
-
-      //get data from module type
-      thiz.loadGridData = function(id){
-        $http({
-          method: 'get',
-          url: '/rest-api/modules/'+id+'/modules_type',
-          headers: {
-            "Authorization": "Bearer "+token
+    }
+  }
+})
+.directive('modalAddModType', function($uibModal) {
+  return {
+    restrict:'A',
+    link: function(scope, ele, attr, ctrl){
+      var size = "";
+      scope.animationsEnabled = true;
+      $(ele).on('click', function(){
+        var modalInstance = $uibModal.open({
+          animation: scope.animationsEnabled,
+          templateUrl: 'assets/partials/templates/modales/modalAddModType.html',
+          controller: 'modalAddModTypeCtrl',
+          size: size,
+          resolve: {
+            items: function () {
+              return scope.items;
+            }
           }
-        }).then(function(res){
-          var data = [
-            {id: 'toto', name: 'titi'}, {id: 'toto', name: 'titi'},
-            {id: 'toto', name: 'titi'}, {id: 'toto', name: 'titi'},
-            {id: 'toto', name: 'titi'}, {id: 'toto', name: 'titi'},
-            {id: 'toto', name: 'titi'}, {id: 'toto', name: 'titi'},
-            {id: 'toto', name: 'titi'}, {id: 'toto', name: 'titi'},
-            {id: 'toto', name: 'titi'}, {id: 'toto', name: 'titi'},
-            {id: 'toto', name: 'titi'}, {id: 'toto', name: 'titi'},
-            {id: 'toto', name: 'titi'}, {id: 'toto', name: 'titi'},
-            {id: 'toto', name: 'titi'}, {id: 'toto', name: 'titi'}
-          ]
-          thiz.gridOptions.api.setRowData(data);
-          //thiz.gridOptions.api.setRowData(res.data.moduleTypeList);
-        }, function (error) {
-          //console.log('Error module');
         });
-      };
-
-      var columnDefs = [
-        {
-          //valueGetter: "",
-          headerName: "",
-          checkboxSelection: true,
-          width: 10,
-          headerClass: 'checkboxSel',
-          suppressSorting: true
-        },
-        //headerName: $filter('translate')('APPLIANCE.NAME'),
-        {headerName: glbFac._i('mgtModType.headerGrid.id'), field: "id"},
-        {headerName: glbFac._i('mgtModType.headerGrid.name'), field: "name"},
-      ];
-
-      thiz.gridOptions = {
-        columnDefs: columnDefs,
-        rowData: [],
-        enableColResize: true,
-        angularCompileRows: false,
-        rowSelection: 'multiple',
-        suppressRowClickSelection: true,
-        headerCellRenderer: headerCellRendererFunc,
-        enableFilter: true,
-        enableSorting: true,
-        headerHeight: 30,
-        rowHeight:30,
-        onSelectionChanged: selectedRows,
-        onReady: function() {
-          thiz.gridOptions.api.sizeColumnsToFit();
-        }
-      };
-
-      function headerCellRendererFunc(params) {
-        return agGridConf.checkboxFn(params, thiz);
-      };
-
-      function selectedRows(event) {
-        console.log('ici',event.selectedRows);
-      };
-
-    }, link : function(scope, ele, attr, ctrl){
-      ctrl.createType = function(){
-        scope.showCreateType = true;
-      }
-    },
-    controllerAs:"mgtModTypeCtrl"
+      });
+    }
   }
 })

@@ -4839,6 +4839,8 @@ var ag;
                     eLine.setAttribute("width", size);
                     eLine.setAttribute("height", "2");
                     eLine.setAttribute("class", "ag-header-icon");
+                    //custom
+                    eLine.setAttribute("fill", "#32c5d2");
                     eSvg.appendChild(eLine);
                 });
                 return eSvg;

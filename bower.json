@@ -22,7 +22,6 @@
 			"angular-translate-loader-static-files": "latest",
 			"ag-grid": "latest",
 			"angular-bootstrap": "latest",
-			"Bootflat": "latest",
 			"bootstrap": "latest"
 	}
 }

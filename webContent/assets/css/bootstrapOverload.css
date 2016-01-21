@@ -1,0 +1,27 @@
+/* surcharge bootstrap */
+h1, h2, h3, h4, h5, h6 {font-weight:300;}
+
+/* button */
+button.btn-info {background:#1CBBFF; float:right;}
+button.fa {height:50px; text-align:left; background: #1CBBFF;}
+button.fa i.fa{float:right; width:auto; padding:0; background:none; margin-top:2px; color:white; margin-left:25px;}
+
+a, button, code, div, img, input, label, li, p, pre, select, span, svg, table, td, textarea, th, ul {
+  -webkit-border-radius: 0!important; -moz-border-radius: 0!important; border-radius: 0!important;
+}
+.btn:hover {transition: all .3s}
+.btn.default {color: #666; background-color: #e1e5ec; border-color: #e1e5ec;}
+.btn.default:hover {color: #666; background-color: #c2cad8; border-color: #bcc5d4}
+
+/* form */
+.form-control {background: 0 0; border: 0; border-bottom: 1px solid #c2cad8; -webkit-border-radius: 0;
+  -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; color: #555; box-shadow: none; font-size: 14px;}
+.form-control {outline: 0!important;}
+.btn, .form-control {box-shadow: none!important;}
+.form-control.default:focus {border-color: #c2cad8}
+
+/* select box */
+select.form-control {color:white; appearance:none; -moz-appearance:button;
+  -webkit-appearance:button; border:1px solid #32c5d2; background: #32c5d2 url('../images/arrow.png') no-repeat right 12px; background-size: 8% 22%;}
+
+.glyphicon:hover {text-decoration:none;}

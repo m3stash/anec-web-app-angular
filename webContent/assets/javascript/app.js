@@ -4,7 +4,8 @@ var webapp = angular.module('webapp', [
   // 3rd party modules.
   'pascalprecht.translate',
   'directives',
-  'agGrid'
+  'agGrid',
+  'ui.bootstrap'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -17,8 +18,9 @@ var webapp = angular.module('webapp', [
     .when('/modulesByDistrict', {
       templateUrl: 'assets/partials/modulesByDistrict.html'
     })
-    .when('/create_module_type', {
-      templateUrl: 'assets/partials/mgt-mod-type.html'
+    .when('/mgt-module-type', {
+      templateUrl: 'assets/partials/mgt-mod-type.html',
+      controller: 'mgtModuleTypeCtrl'
     })
     .otherwise({redirectTo: '/login'});
 }])

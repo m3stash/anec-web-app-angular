@@ -2,6 +2,7 @@ webapp.factory('agGridConf', function($q, $location, $rootScope) {
   return {
     'checkboxFn': function(params, thiz) {
       var eHeader = document.createElement('span');
+      eHeader.className = 'title';
       if(params.colDef.checkboxSelection === true){
         eHeader.innerHTML = '<input id="checkboxAll" type="checkbox">';
         eHeader.addEventListener('click', function() {
