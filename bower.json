@@ -13,15 +13,16 @@
     	"test",
     	"tests"
 	],
-	"dependencies": {
 	    "jquery": "latest",
-	    "angular": "latest",
+	    "angular": ">=1.5",
 	    "angular-route": "latest",
 			"angular-sanitize": "latest",
+			"angular-messages": "latest",
 			"angular-translate": "latest",
 			"angular-translate-loader-static-files": "latest",
 			"ag-grid": "latest",
 			"angular-bootstrap": "latest",
-			"bootstrap": "latest"
+			"bootstrap": "latest",
+			"angular-notify": "latest"
 	}
 }

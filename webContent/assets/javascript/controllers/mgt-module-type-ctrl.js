@@ -3,13 +3,7 @@ angular.module('webapp').controller('mgtModuleTypeCtrl', function ($scope, $http
   $scope.modObj = {};
 
   //get data from module type
-  $http({
-    method: 'get',
-    url: '/rest-api/modules',
-    headers: {
-      "Authorization": "Bearer "+token
-    }
-  }).then(function(res){
+  $http.get('/rest-api/modules').then(function(res){
     $scope.modulesOptions = res.data.modulesList;
   }, function (error) {
     //console.log('Error module');
@@ -17,13 +11,7 @@ angular.module('webapp').controller('mgtModuleTypeCtrl', function ($scope, $http
 
   //get data from module type
   $scope.loadGridData = function(id){
-    $http({
-      method: 'get',
-      url: '/rest-api/modules/'+id+'/modules_type',
-      headers: {
-        "Authorization": "Bearer "+token
-      }
-    }).then(function(res){
+    $http.get('/rest-api/modules/'+id+'/modules_type').then(function(res){
       $scope.gridOptions.api.setRowData(res.data.moduleTypeList);
     }, function (error) {
       //console.log('Error module');

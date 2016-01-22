@@ -1,11 +1,12 @@
 'use strict';
 var webapp = angular.module('webapp', [
-  'ngRoute', 'ngSanitize', 'httpInterceptor',
+  'ngRoute', 'ngSanitize', 'httpInterceptor', 'ngMessages',
   // 3rd party modules.
   'pascalprecht.translate',
   'directives',
   'agGrid',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'cgNotify'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider

@@ -7,6 +7,10 @@ html, body {width:100%; height:100%; box-sizing:border-box; background:#eff3f8;}
 body, h1, h2, h3, h4, h5, h6 {font-family:"Open Sans",sans-serif;}
 .glyphicon {cursor:pointer;}
 
+/* form */
+.required:after {content:" *"; color:red;}
+.txt-error {text-transform:uppercase; font-size:11px; color:red;}
+
 /* login */
 #login {overflow:hidden; width:600px; color:white; margin:100px auto; padding:0 0 50px 0; background:white; border-radius:3px;}
 #login .header {line-height:57px;}

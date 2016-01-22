@@ -7,6 +7,8 @@ factory('httpInterceptor', function($q, $location, $rootScope) {
 	return {
 	    // optional method
 		'request': function(config) {
+			//token injection for all request
+			config.headers.Authorization = "bearer "+localStorage.getItem('token');
 			return config || $q.when(config);
 		},
 
@@ -21,10 +23,6 @@ factory('httpInterceptor', function($q, $location, $rootScope) {
 
 	    // optional method
 	    'response': function(response) {
-	    	// do something on success
-	    	if(response.config.url.split('/')[0] == 'intractiv-rest-api'){
-	    		$('.whiteBox').hide();
-	    	}
 	    	return response || $q.when(response);
 	    },
 
@@ -50,12 +48,9 @@ factory('httpInterceptor', function($q, $location, $rootScope) {
 			//si 401 => on ouvre la modale de login
 			if(rejection.status == '401'){
         console.log('401')
-				//window.location.href = "/login.html?url="+$location.url();
 				return false;
 			}
-//			if (canRecover(rejection)) {
-//				return responseOrNewPromise;
-//			}
+
 			return $q.reject(rejection);
 		}
 	};

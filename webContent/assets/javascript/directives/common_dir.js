@@ -191,24 +191,31 @@ angular.module('directives', [])
     }
   }
 })
-.directive('modalAddModType', function($uibModal) {
+.directive('modalAddModType', function($uibModal, notify, glbFac) {
   return {
     restrict:'A',
     link: function(scope, ele, attr, ctrl){
       var size = "";
+      var items = {};
+      items.actionType = attr.modalAddModType;
       scope.animationsEnabled = true;
       $(ele).on('click', function(){
-        var modalInstance = $uibModal.open({
-          animation: scope.animationsEnabled,
-          templateUrl: 'assets/partials/templates/modales/modalAddModType.html',
-          controller: 'modalAddModTypeCtrl',
-          size: size,
-          resolve: {
-            items: function () {
-              return scope.items;
+        if(attr.idmodule === ""){
+          notify({message : glbFac._i('error.modalAddModType.idModule'), duration: 2000})
+        }else{
+          items.idmodule = attr.idmodule;
+          var modalInstance = $uibModal.open({
+            animation: scope.animationsEnabled,
+            templateUrl: 'assets/partials/templates/modales/modalAddModType.html',
+            controller: 'modalAddModTypeCtrl',
+            size: size,
+            resolve: {
+              items: function () {
+                return items;
+              }
             }
-          }
-        });
+          });
+        }
       });
     }
   }

@@ -1,21 +1,30 @@
 <div class="modale">
+  <form name="form" novalidate ng-submit="submit(form.$valid)">
     <div class="modal-header">
-        <h3 class="modal-title">I'm a modal!</h3>
+        <h4 class="modal-title">{{'modal.modalAddModType.title' | translate}}</h4>
     </div>
     <div class="modal-body">
       <ul class="form">
         <li>
-          <label for="form_type">Type:</label>
-          <input id="form_type" class="form-control" placeholder="ex : gaz" type="text" tabindex="1">
+          <label for="form_type" class="required">Type:</label>
+          <input ng-model="formObj.type" name="type" id="form_type" class="form-control"
+            placeholder="{{'modal.modalAddModType.placeholder.type' | translate}}" type="text" tabindex="1" required>
+          <div ng-messages="form.type.$error">
+              <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.required' | translate}}</div>
+          </div>
         </li>
         <li>
-          <label for="form_id">id:</label>
-          <input id="form_id" class="form-control" placeholder="ex : MOD_TYPE_001" type="text" tabindex="2">
+          <label for="form_id" class="required">id:</label>
+          <input ng-model="formObj.id" name="id" id="form_id" class="form-control" placeholder="{{'modal.modalAddModType.placeholder.id' | translate}}" type="text" tabindex="2" required>
+          <div ng-messages="form.id.$error">
+              <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.required' | translate}}</div>
+          </div>
         </li>
       </ul>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()" tabindex="3">OK</button>
+        <button class="btn btn-primary" type="submit" ng-click="ok()" tabindex="3">OK</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()" tabindex="4">Cancel</button>
     </div>
+  </form>
 </div>
