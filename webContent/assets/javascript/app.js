@@ -25,14 +25,16 @@ var webapp = angular.module('webapp', [
     })
     .otherwise({redirectTo: '/login'});
 }])
-.config(['$translateProvider', function ($translateProvider) {
-		$translateProvider.preferredLanguage('fr');
-		$translateProvider.useStaticFilesLoader({
-			prefix: 'assets/i18n/',
-			suffix: '.json'
-		})
-    // echape les failles xss possilbles
-    $translateProvider.useSanitizeValueStrategy('escape');
+.config(['$translateProvider', '$httpProvider', function ($translateProvider, $httpProvider) {
+	$translateProvider.preferredLanguage('fr');
+	$translateProvider.useStaticFilesLoader({
+		prefix: 'assets/i18n/',
+		suffix: '.json'
+	})
+  // echape les failles xss possilbles
+  $translateProvider.useSanitizeValueStrategy('escape');
+  // force data in body for delete methode
+  $httpProvider.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };
 }])
 .run(function(glbFac, $rootScope) {
     //console.log("app run");

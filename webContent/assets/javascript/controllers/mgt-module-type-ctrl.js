@@ -1,7 +1,7 @@
 angular.module('webapp').controller('mgtModuleTypeCtrl', function ($scope, $http, agGridConf, $filter, glbFac) {
   var token = localStorage.getItem('token');
   $scope.modObj = {};
-
+  $scope.rows = [];
   //get data from module type
   $http.get('/rest-api/modules').then(function(res){
     $scope.modulesOptions = res.data.modulesList;
@@ -11,11 +11,19 @@ angular.module('webapp').controller('mgtModuleTypeCtrl', function ($scope, $http
 
   //get data from module type
   $scope.loadGridData = function(id){
-    $http.get('/rest-api/modules/'+id+'/modules_type').then(function(res){
-      $scope.gridOptions.api.setRowData(res.data.moduleTypeList);
-    }, function (error) {
-      //console.log('Error module');
-    });
+    //display loader grid
+    $scope.gridOptions.api.showLoadingOverlay();
+    if(_.isUndefined(id)){
+      $scope.gridOptions.api.setRowData([]);
+    }else{
+      $http.get('/rest-api/modules/'+id+'/modules_type').then(function(res){
+        console.log('ici',res)
+        $scope.gridOptions.api.setRowData(res.data.moduleTypeList);
+      }, function (error) {
+        //console.log('Error module');
+      });
+    }
+
   };
 
   var columnDefs = [
@@ -29,7 +37,7 @@ angular.module('webapp').controller('mgtModuleTypeCtrl', function ($scope, $http
       suppressSorting: true
     },
     //headerName: $filter('translate')('APPLIANCE.NAME'),
-    {headerName: glbFac._i('mgtModType.headerGrid.id'), field: "id"},
+    {headerName: glbFac._i('mgtModType.headerGrid.id'), field: "_id"},
     {headerName: glbFac._i('mgtModType.headerGrid.name'), field: "name"},
   ];
 
@@ -47,6 +55,8 @@ angular.module('webapp').controller('mgtModuleTypeCtrl', function ($scope, $http
     rowHeight:36,
     onSelectionChanged: selectedRows,
     enableScrollbars: false,
+    overlayLoadingTemplate: '<span class="gridOverlay">'+glbFac._i("common.grid.loading")+'</span><span class="glyphicon glyphicon-repeat loop" aria-hidden="true"></span>',
+    overlayNoRowsTemplate: '<span class="gridOverlay">'+glbFac._i("common.grid.noReasult")+'</span>',
     onReady: function() {
       $scope.gridOptions.api.sizeColumnsToFit();
     }
@@ -57,7 +67,7 @@ angular.module('webapp').controller('mgtModuleTypeCtrl', function ($scope, $http
   };
 
   function selectedRows(event) {
-    console.log('ici',event.selectedRows);
+    $scope.rows = event.selectedRows;
   };
 
   $scope.createType = function(){

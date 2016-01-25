@@ -15,7 +15,6 @@ webapp.factory('agGridConf', function($q, $location, $rootScope) {
       }else{
         eHeader.innerHTML = params.value
       }
-
       return eHeader;
     }
   };

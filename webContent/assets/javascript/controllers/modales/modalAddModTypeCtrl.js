@@ -10,7 +10,6 @@ angular.module('webapp').controller('modalAddModTypeCtrl', function ($scope, $ui
       if(items.actionType === 'create'){
         var data = {};
         data.name = $scope.formObj.type;
-        data.id = $scope.formObj.id;
         $http.post('/rest-api/modules/'+items.idmodule+'/modules_type', data).then(function(res){
           console.log('response : ', res)
         }, function (error) {

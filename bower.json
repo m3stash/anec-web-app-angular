@@ -12,7 +12,7 @@
     	"bower_components",
     	"test",
     	"tests"
-	],
+	],"dependencies": {
 	    "jquery": "latest",
 	    "angular": ">=1.5",
 	    "angular-route": "latest",
@@ -20,9 +20,10 @@
 			"angular-messages": "latest",
 			"angular-translate": "latest",
 			"angular-translate-loader-static-files": "latest",
-			"ag-grid": "latest",
+			"ag-grid": "3.1.1",
 			"angular-bootstrap": "latest",
 			"bootstrap": "latest",
-			"angular-notify": "latest"
+			"angular-notify": "latest",
+			"underscore": "latest"
 	}
 }

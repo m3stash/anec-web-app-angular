@@ -13,18 +13,11 @@
               <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.required' | translate}}</div>
           </div>
         </li>
-        <li>
-          <label for="form_id" class="required">id:</label>
-          <input ng-model="formObj.id" name="id" id="form_id" class="form-control" placeholder="{{'modal.modalAddModType.placeholder.id' | translate}}" type="text" tabindex="2" required>
-          <div ng-messages="form.id.$error">
-              <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.required' | translate}}</div>
-          </div>
-        </li>
       </ul>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="submit" ng-click="ok()" tabindex="3">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()" tabindex="4">Cancel</button>
+        <button class="btn btn-primary" type="submit" ng-click="ok()" tabindex="3">{{'common.button.ok' | translate}}</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()" tabindex="4">{{'common.button.cancel' | translate}}</button>
     </div>
   </form>
 </div>

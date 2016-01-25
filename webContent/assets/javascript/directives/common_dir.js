@@ -49,15 +49,7 @@ angular.module('directives', [])
     restrict:'A',
     controller : function(){
       this.send = function(){
-        var token = localStorage.getItem('token');
-        $http({
-          method: 'post',
-          url: '/rest-api/contracts/create',
-          headers: {
-            "Authorization": "Bearer "+token
-          },
-          data: {}
-        });
+        $http.post('/rest-api/contracts/create');
       }
     },
     controllerAs:"contractsCtrl"
@@ -217,6 +209,38 @@ angular.module('directives', [])
           });
         }
       });
+    }
+  }
+})
+.directive('modalDelete', function($uibModal, $http, notify, glbFac){
+  return {
+    restrict:'A',
+    link: function(scope, ele, attr, ctrl){
+      scope.deleteMod_type = function(rows){
+        var modalInstance = $uibModal.open({
+          animation: scope.animationsEnabled,
+          templateUrl: 'assets/partials/templates/modales/modalDeleteType.html',
+          controller: 'modalDeleteCtrl',
+          size: ""
+        });
+        modalInstance.result.then(function () {
+          var listIds = [];
+          for(var i = 0; i< rows.length; i++){
+            listIds.push(rows[i]._id);
+          }
+          $http({
+            method: "delete",
+            url: '/rest-api/modules/'+scope.modObj.modulesList+'/modules_type',
+            data: listIds
+          }).then(function(res){
+            notify({message : glbFac._i('notify.delete.conf'), duration: 2000})
+          }, function (error) {
+            notify({message : glbFac._i('notify.delete.error.conf'), duration: 2000})
+          });
+        }, function () {
+          //cancel
+        });
+      }
     }
   }
 })

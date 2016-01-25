@@ -11,6 +11,13 @@ body, h1, h2, h3, h4, h5, h6 {font-family:"Open Sans",sans-serif;}
 .required:after {content:" *"; color:red;}
 .txt-error {text-transform:uppercase; font-size:11px; color:red;}
 
+/* loader */
+.glyphicon.loop {color:#93a2a9; -webkit-animation:loop 1s linear infinite; -moz-animation:loop 1s linear infinite;
+  animation:loop 1s linear infinite;}
+@-moz-keyframes loop { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes loop { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes loop { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 /* login */
 #login {overflow:hidden; width:600px; color:white; margin:100px auto; padding:0 0 50px 0; background:white; border-radius:3px;}
 #login .header {line-height:57px;}
@@ -66,7 +73,7 @@ body, h1, h2, h3, h4, h5, h6 {font-family:"Open Sans",sans-serif;}
 height: auto; font-weight: 300; color:#666;}
 
 /* header grid */
-.header-button {background:white; margin:10px 0; padding:10px 0;}
+.header-button {background:white; margin:10px 0; padding:10px 10px 5px;}
 
 /* modal */
 .modal-body ul.form li {margin-bottom:10px;}
@@ -89,6 +96,7 @@ height: auto; font-weight: 300; color:#666;}
 .ag-fresh .ag-filter-checkbox {margin-right:5px;}
 
 /* surcharge css ag-grid */
+.gridOverlay {color:#93a2a9!important;}
 .ag-header-container .checkboxSel .ag-header-cell-menu-button {display: none;}
 .ag-fresh .ag-cell {padding:7px 0; color:#93a2a9;}
 .ag-fresh .ag-cell-focus, .ag-fresh .ag-cell-no-focus {border:0; outline:none;}

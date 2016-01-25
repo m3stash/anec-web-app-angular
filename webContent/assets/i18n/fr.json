@@ -1,18 +1,25 @@
-
 {
     "common.connexion": "Connexion",
     "common.select.defaultVal": "choisir une option",
     "common.placeholder.search": "Rechercher par...",
+    "common.grid.noReasult": "Aucun résultat...",
+    "common.grid.loading": "chargement ",
     "common.required": "champ requis",
+    "common.button.ok": "Valider",
+    "common.button.cancel": "Annuler",
+    "notify.delete.conf": "La suppression à bien été effectué",
+    "notify.delete.error.conf": "Une erreur est survenue lors de la suppression",
     "error.modalAddModType.idModule": "Vous devez selectionner un module",
     "button.add-mod-type": "Ajouter un type",
+    "button.delete": "Supprimer",
     "login.login": "Login",
     "login.password": "Numéro adhérent",
     "login.identify": "M'identifier",
     "mgtModType.headerGrid.id": "id",
     "mgtModType.headerGrid.name": "module type",
-    "mgtModType.form.moduleSel": "selectionnez un module",
+    "mgtModType.form.moduleSel": "Selectionnez un module",
     "modal.modalAddModType.title": "Module Type:",
-    "modal.modalAddModType.placeholder.id": "ex : MOD_TYPE_001",
-    "modal.modalAddModType.placeholder.type": "ex : gaz"
+    "modal.modalAddModType.placeholder.type": "ex : gaz",
+    "modal.modalDeleteType.title": "Confirmation de supression",
+    "modal.modalDeleteType.confTxt": "êtes-vous sûr de vouloir supprimer cet item?"
 }

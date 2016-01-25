@@ -1,0 +1,14 @@
+<div class="modale">
+  <form name="form" novalidate ng-submit="submit(form.$valid)">
+    <div class="modal-header">
+        <h4 class="modal-title">{{'modal.modalDeleteType.title' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+      {{'modal.modalDeleteType.confTxt' | translate}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit" ng-click="valid()" tabindex="3">{{'common.button.ok' | translate}}</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()" tabindex="4">{{'common.button.cancel' | translate}}</button>
+    </div>
+  </form>
+</div>
