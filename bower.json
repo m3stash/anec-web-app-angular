@@ -24,6 +24,8 @@
 			"angular-bootstrap": "latest",
 			"bootstrap": "latest",
 			"angular-notify": "latest",
-			"underscore": "latest"
+			"underscore": "latest",
+			"angular-resource": "latest",
+			"moment": ">=2.4.0"
 	}
 }

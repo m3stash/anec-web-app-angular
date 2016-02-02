@@ -22,8 +22,15 @@ a, button, code, div, img, input, label, li, p, pre, select, span, svg, table, t
 .form-control.default:focus {border-color: #c2cad8}
 
 /* select box */
-select.form-control {color:white; appearance:none; -moz-appearance:button; padding-right:20px;
-  -webkit-appearance:button; border:1px solid #32c5d2; background: #32c5d2 url('../images/arrow.png')
+select.form-control {color:white; appearance:none; -moz-appearance:none; padding-right:20px;
+  -webkit-appearance:none; border:1px solid #32c5d2; background: #32c5d2 url('../images/arrow.png')
   no-repeat right 12px; background-size: 8% 22%; cursor:pointer;}
-
+select.form-control option {background:white; border:0; color:#93A2A9;}
 .glyphicon:hover {text-decoration:none;}
+
+/*@media (min-width: 768px){
+  .container {
+    width:100%;
+    margin:0!important;
+  }
+}*/

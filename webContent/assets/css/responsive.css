@@ -1,7 +1,3 @@
-@media (max-width: 991px){
-
-}
-
 @media (max-width: 500px){
   .nav-menu {background:#eff3f8;padding:20px 0 10px 0; height:auto;}
   .nav-menu ul li {border-bottom: 1px solid #F0F0F0; float:none; }

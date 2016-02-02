@@ -2,6 +2,7 @@
 <html ng-app="webapp">
 	<head>
 		<title>webapp</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="shortcut icon" href="assets/images/favicon.png">
 		<!-- css -->
@@ -10,9 +11,9 @@
 		<link rel="stylesheet" href="assets/css/ag-grid.css">
 		<link rel="stylesheet" href="assets/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/css/bootstrapOverload.css">
+		<link rel="stylesheet" href="assets/javascript/bower_components/angular-notify/dist/angular-notify.min.css">
 		<link rel="stylesheet" href="assets/css/main.css">
 		<link rel="stylesheet" href="assets/css/responsive.css">
-		<link rel="stylesheet" href="assets/javascript/bower_components/angular-notify/dist/angular-notify.min.css">
     <!-- bower:js -->
     <script src="assets/javascript/bower_components/jquery/dist/jquery.js"></script>
     <script src="assets/javascript/bower_components/angular/angular.js"></script>
@@ -26,6 +27,8 @@
     <script src="assets/javascript/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="assets/javascript/bower_components/angular-notify/dist/angular-notify.js"></script>
     <script src="assets/javascript/bower_components/underscore/underscore.js"></script>
+    <script src="assets/javascript/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="assets/javascript/bower_components/moment/moment.js"></script>
     <!-- endbower -->
 		<script src="assets/javascript/app.js"></script>
 		<script src="assets/javascript/directives/common_dir.js"></script>
@@ -33,12 +36,14 @@
 		<script src="assets/javascript/factory/http-interceptor.js"></script>
 		<script src="assets/javascript/factory/ag-grid_conf.js"></script>
 		<script src="assets/javascript/factory/global-factory.js"></script>
+		<script src="assets/javascript/factory/resources.js"></script>
 		<!-- controllers -->
 		<script src="assets/javascript/controllers/mainCtrl.js"></script>
-		<script src="assets/javascript/controllers/mgt-module-type-ctrl.js"></script>
 		<!-- modales -->
 		<script src="assets/javascript/controllers/modales/modalAddModTypeCtrl.js"></script>
 		<script src="assets/javascript/controllers/modales/modalDeleteCtrl.js"></script>
+		<!--directive-->
+		<script src="assets/javascript/directives/mgt-mod-type.js"></script>
 	</head>
 	<body>
 		<top-menu></top-menu>

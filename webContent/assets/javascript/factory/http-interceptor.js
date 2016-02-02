@@ -8,6 +8,7 @@ factory('httpInterceptor', function($q, $location, $rootScope) {
 	    // optional method
 		'request': function(config) {
 			//token injection for all request
+			// console.log(config.headers)
 			config.headers.Authorization = "bearer "+localStorage.getItem('token');
 			return config || $q.when(config);
 		},

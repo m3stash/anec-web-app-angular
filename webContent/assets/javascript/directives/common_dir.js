@@ -1,3 +1,4 @@
+'use strict';
 angular.module('directives', [])
 .directive('login', function($http, $location) {
   return {
@@ -185,20 +186,35 @@ angular.module('directives', [])
 })
 .directive('modalAddModType', function($uibModal, notify, glbFac) {
   return {
-    restrict:'A',
+    restrict:'E',
+    require: '^mgtModType',
+    template: '<button ng-click="gesModType()" ng-disabled="{{condition}}" idModule="{{modObj.modulesList}}" type="button"'+
+      'class="btn default">{{"button."+actionType | translate}}</button>',
+    scope: {
+      idModule : "=",
+      actionType: "@",
+      rows: "=",
+      condition: "@"
+    },
+    // bindToController: {},
     link: function(scope, ele, attr, ctrl){
       var size = "";
       var items = {};
-      items.actionType = attr.modalAddModType;
+      items.actionType = scope.actionType;
       scope.animationsEnabled = true;
-      $(ele).on('click', function(){
-        if(attr.idmodule === ""){
-          notify({message : glbFac._i('error.modalAddModType.idModule'), duration: 2000})
+      var url = 'assets/partials/templates/modales/modalAddModType.html';
+      if(scope.actionType === 'delete'){
+        url = 'assets/partials/templates/modales/modalDeleteType.html';
+      }
+      scope.gesModType = function(){
+        if(_.isUndefined(scope.idModule)){
+          notify({message : glbFac._i('error.modalAddModType.idModule'), duration: 2000});
         }else{
-          items.idmodule = attr.idmodule;
+          items.rows = ctrl.getRows();
+          items.idModule = scope.idModule;
           var modalInstance = $uibModal.open({
             animation: scope.animationsEnabled,
-            templateUrl: 'assets/partials/templates/modales/modalAddModType.html',
+            templateUrl: url,
             controller: 'modalAddModTypeCtrl',
             size: size,
             resolve: {
@@ -207,40 +223,15 @@ angular.module('directives', [])
               }
             }
           });
-        }
-      });
-    }
-  }
-})
-.directive('modalDelete', function($uibModal, $http, notify, glbFac){
-  return {
-    restrict:'A',
-    link: function(scope, ele, attr, ctrl){
-      scope.deleteMod_type = function(rows){
-        var modalInstance = $uibModal.open({
-          animation: scope.animationsEnabled,
-          templateUrl: 'assets/partials/templates/modales/modalDeleteType.html',
-          controller: 'modalDeleteCtrl',
-          size: ""
-        });
-        modalInstance.result.then(function () {
-          var listIds = [];
-          for(var i = 0; i< rows.length; i++){
-            listIds.push(rows[i]._id);
-          }
-          $http({
-            method: "delete",
-            url: '/rest-api/modules/'+scope.modObj.modulesList+'/modules_type',
-            data: listIds
-          }).then(function(res){
-            notify({message : glbFac._i('notify.delete.conf'), duration: 2000})
-          }, function (error) {
-            notify({message : glbFac._i('notify.delete.error.conf'), duration: 2000})
+          modalInstance.result.then(function (cause) {
+            if(cause === 'save'){
+              ctrl.onRefreshAll(ctrl.modObj.modulesList);
+            }
+          }, function () {
+            //error
           });
-        }, function () {
-          //cancel
-        });
-      }
+        }
+      };
     }
   }
 })

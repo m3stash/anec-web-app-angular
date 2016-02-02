@@ -1,12 +1,13 @@
 'use strict';
 var webapp = angular.module('webapp', [
-  'ngRoute', 'ngSanitize', 'httpInterceptor', 'ngMessages',
+  'ngRoute', 'ngSanitize', 'httpInterceptor', 'ngMessages', 'ngResource',
   // 3rd party modules.
   'pascalprecht.translate',
   'directives',
   'agGrid',
   'ui.bootstrap',
-  'cgNotify'
+  'cgNotify',
+  'page-mgt-mod-type'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -20,8 +21,7 @@ var webapp = angular.module('webapp', [
       templateUrl: 'assets/partials/modulesByDistrict.html'
     })
     .when('/mgt-module-type', {
-      templateUrl: 'assets/partials/mgt-mod-type.html',
-      controller: 'mgtModuleTypeCtrl'
+      template: '<mgt-mod-type></mgt-mod-type>'
     })
     .otherwise({redirectTo: '/login'});
 }])
@@ -37,5 +37,6 @@ var webapp = angular.module('webapp', [
   $httpProvider.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };
 }])
 .run(function(glbFac, $rootScope) {
-    //console.log("app run");
+    var language = window.navigator.userLanguage || window.navigator.language;
+    moment.locale(language);
 });

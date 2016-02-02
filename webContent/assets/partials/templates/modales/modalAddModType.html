@@ -7,10 +7,11 @@
       <ul class="form">
         <li>
           <label for="form_type" class="required">Type:</label>
-          <input ng-model="formObj.type" name="type" id="form_type" class="form-control"
+          <input ng-model="formObj.type" ng-maxlength="20" name="type" id="form_type" class="form-control"
             placeholder="{{'modal.modalAddModType.placeholder.type' | translate}}" type="text" tabindex="1" required>
           <div ng-messages="form.type.$error">
-              <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.required' | translate}}</div>
+              <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.error.required' | translate}}</div>
+              <div class="txt-error" ng-message="maxlength" ng-if="form.$submitted">{{'common.error.maxlength' | translate:'{ value: 10 }'}}</div>
           </div>
         </li>
       </ul>
