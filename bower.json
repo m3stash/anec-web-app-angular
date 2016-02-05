@@ -26,6 +26,7 @@
 			"angular-notify": "latest",
 			"underscore": "latest",
 			"angular-resource": "latest",
-			"moment": ">=2.4.0"
+			"moment": ">=2.4.0",
+			"angular-google-chart": "latest"
 	}
 }

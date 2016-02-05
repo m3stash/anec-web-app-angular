@@ -8,7 +8,6 @@ factory('httpInterceptor', function($q, $location, $rootScope) {
 	    // optional method
 		'request': function(config) {
 			//token injection for all request
-			// console.log(config.headers)
 			config.headers.Authorization = "bearer "+localStorage.getItem('token');
 			return config || $q.when(config);
 		},
@@ -48,7 +47,8 @@ factory('httpInterceptor', function($q, $location, $rootScope) {
 
 			//si 401 => on ouvre la modale de login
 			if(rejection.status == '401'){
-        console.log('401')
+        // $location.path("/login.html?url="+$location.url());
+				// console.clear();
 				return false;
 			}
 

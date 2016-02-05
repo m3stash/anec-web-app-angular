@@ -36,9 +36,9 @@ angular.module('directives', [])
         }
       }).then(function(response){
         thiz.modules = response.data.modulesList;
-        console.log(thiz.modules)
+        //console.log(thiz.modules)
       }, function (error) {
-        console.log('error')
+        //console.log('error')
         //error
       });
     },
@@ -56,17 +56,37 @@ angular.module('directives', [])
     controllerAs:"contractsCtrl"
   };
 })
-.directive('menuTop', function($http) {
+.directive('menuTop', function($http, $timeout, $route, $translate, $location) {
   return {
     restrict:'A',
+    controllerAs:"menuTopCtrl",
     controller : function(){
+      var thiz = this;
       var user = JSON.parse(localStorage.getItem('user'));
       if(user){
-        this.firstname = user.firstName;
-        this.lastName = user.lastName;
+        thiz.firstname = user.firstName;
+        thiz.lastName = user.lastName;
+        thiz.isAdmin = user.isAdmin;
       }
-    },
-    controllerAs:"menuTopCtrl"
+      //set language in local storage
+      thiz.changeLang = function(lang){
+        localStorage.setItem('lang',lang);
+        $route.reload();
+        $translate.use(lang)
+      }
+      if(!_.isNull(localStorage.getItem('lang'))){
+        thiz.idSelectedLang = localStorage.getItem('lang');
+      }
+      thiz.listLang = [{id:"fr", value:"Français"},{id:"en", value:"English"}];
+      thiz.logout = function(){
+        $http.get('/rest-api/logout').then(function(res){
+          localStorage.removeItem('token');
+          $location.path('/login')
+        }, function(err){
+          //
+        });
+      };
+    }
   };
 })
 .directive('modulesByDistrict', function($http) {
@@ -124,28 +144,6 @@ angular.module('directives', [])
       }, function (error) {
         //error
       });
-
-      // this.sendModules = function(){
-      //   console.log(this.sendModules)
-      // }
-      // var thiz = this;
-      // var token = localStorage.getItem('token');
-      // $http({
-      //   method: 'post',
-      //   url: '/rest-api/modulesByDistrict',
-      //   headers: {
-      //       "Authorization": "Bearer "+token
-      //   },
-      //   data: {
-      //     obj: modulesObj
-      //   }
-      // }).then(function(response){
-      //   thiz.modules = response.data.modulesList;
-      //   console.log(thiz.modules)
-      // }, function (error) {
-      //   console.log('error')
-      //   //error
-      // });
     },
     controllerAs:"modulesByDistrictCtrl"
   };
@@ -232,6 +230,59 @@ angular.module('directives', [])
           });
         }
       };
+    }
+  }
+})
+.directive('selectBox', function($timeout) {
+  return {
+    restrict:'E',
+    scope: {
+      list: "=",
+      defaultValue: "=",
+      click: "=",
+      defaultSelected: "="
+    },
+    template:
+      '<div class="btn-group" uib-dropdown keyboard-nav>'+
+        '<button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary" uib-dropdown-toggle>'+
+          '</span>{{value}} <span class="caret"></span>'+
+        '</button>'+
+        '<ul uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">'+
+          '<li ng-class="{selected: item.id === itmId}" ng-repeat="item in sbList" ng-click="click(item.id); returnValue(item)" role="menuitem"><a>{{item.value}}</a></li>'+
+        '</ul>'+
+      '</div>',
+    link: function(scope, ele, attr, ctrl){
+      var list = [];
+      scope.$on('$destroy',scope.$watch("list", function(oldVal,newVal){
+        if(scope.list && scope.list.length > 0){
+          //aray void but default val is display if defaultValue present
+          if(!_.isUndefined(scope.defaultValue)){
+            list = scope.list.unshift({id:null, value: scope.defaultValue});
+            scope.value = scope.defaultValue;
+            scope.sbList = scope.list;
+          }else{
+            scope.sbList = scope.list;
+          }
+          //if default value selected
+          if(!_.isUndefined(scope.defaultSelected)){
+            _.each(scope.list, function(list){
+              if(list.id === scope.defaultSelected){
+                scope.itmId = list.id;
+                scope.value = list.value;
+              }
+            });
+          }
+        }else{
+          //aray void but default val is display if defaultValue present
+          if(!_.isUndefined(scope.defaultValue)){
+            scope.sbList = [{id:null, value: scope.defaultValue}];
+          }
+        }
+        scope.returnValue = function(itm){
+          scope.value = itm.value;
+          scope.itmId = itm.id;
+        }
+      }));
     }
   }
 })

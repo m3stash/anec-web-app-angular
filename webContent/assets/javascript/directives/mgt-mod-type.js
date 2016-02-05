@@ -14,6 +14,7 @@ angular.module('page-mgt-mod-type', [])
       var idSelect = null;//param id for reload grid function
       //get data from module type
       $http.get('/rest-api/modules').then(function(res){
+        console.log(res)
         thiz.modulesOptions = res.data.modulesList;
       }, function (error) {
         //console.log('Error module');
@@ -49,12 +50,19 @@ angular.module('page-mgt-mod-type', [])
         {headerName: glbFac._i('mgtModType.headerGrid.id'), field: "_id"},
         {headerName: glbFac._i('mgtModType.headerGrid.name'), field: "name"},
         {headerName: glbFac._i('mgtModType.headerGrid.create_date'), field: "create_date", cellRenderer: function(data) {
-        if(_.isUndefined(data.value)){
-          return "-";
-        }else{
-          return moment(data.value).format("L");
-        }
-    }},
+          if(_.isUndefined(data.value)){
+            return "-";
+          }else{
+            return moment(data.value).format("L");
+          }
+        }},
+        {headerName: glbFac._i('mgtModType.headerGrid.last_modif_date'), field: "last_modif_date", cellRenderer: function(data) {
+          if(_.isUndefined(data.value)){
+            return "-";
+          }else{
+            return moment(data.value).format("L");
+          }
+        }}
       ];
 
       thiz.gridOptions = {

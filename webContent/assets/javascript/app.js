@@ -7,7 +7,9 @@ var webapp = angular.module('webapp', [
   'agGrid',
   'ui.bootstrap',
   'cgNotify',
-  'page-mgt-mod-type'
+  'googlechart',
+  'page-mgt-mod-type',
+  'page-main'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -15,18 +17,22 @@ var webapp = angular.module('webapp', [
 	    templateUrl: 'assets/partials/login.html'
 	  })
     .when('/main', {
-	     templateUrl: 'assets/partials/main.html'
+	     template: '<main-page></main-page>'
 	  })
     .when('/modulesByDistrict', {
       templateUrl: 'assets/partials/modulesByDistrict.html'
     })
     .when('/mgt-module-type', {
-      template: '<mgt-mod-type></mgt-mod-type>'
+      template: '<mgt-mod-type></mgt-mod-type>', reloadOnSearch: false
     })
     .otherwise({redirectTo: '/login'});
 }])
 .config(['$translateProvider', '$httpProvider', function ($translateProvider, $httpProvider) {
-	$translateProvider.preferredLanguage('fr');
+  if(_.isNull(localStorage.getItem('lang'))){
+    localStorage.setItem('lang', window.navigator.userLanguage || window.navigator.language);
+  }
+  var lang = localStorage.getItem('lang');
+	$translateProvider.preferredLanguage(lang);
 	$translateProvider.useStaticFilesLoader({
 		prefix: 'assets/i18n/',
 		suffix: '.json'
@@ -37,6 +43,9 @@ var webapp = angular.module('webapp', [
   $httpProvider.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };
 }])
 .run(function(glbFac, $rootScope) {
-    var language = window.navigator.userLanguage || window.navigator.language;
-    moment.locale(language);
+  if(_.isNull(localStorage.getItem('lang'))){
+    localStorage.setItem('lang', window.navigator.userLanguage || window.navigator.language);
+  }
+  var lang = localStorage.getItem('lang');
+  moment.locale(lang);
 });

@@ -5,11 +5,14 @@ html, body {/*width:100%; height:100%;*/ box-sizing:border-box; background:#eff3
   src: url('../fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype');
 }
 body, h1, h2, h3, h4, h5, h6 {font-family:"Open Sans",sans-serif;}
+h1, h2, h3, h4, h5, h6 {color:#49b14b;}
 .glyphicon {cursor:pointer;}
 
 /* form */
 .required:after {content:" *"; color:red;}
 .txt-error {text-transform:uppercase; font-size:11px; color:red;}
+
+.content {background:white; margin: 10px 0; padding:10px 0;}
 
 /* loader */
 .glyphicon.loop {color:#93a2a9; -webkit-animation:loop 1s linear infinite; -moz-animation:loop 1s linear infinite;
@@ -19,7 +22,7 @@ body, h1, h2, h3, h4, h5, h6 {font-family:"Open Sans",sans-serif;}
 @keyframes loop { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 /* login */
-#login {overflow:hidden; width:600px; color:white; margin:100px auto; padding:0 0 50px 0; background:white; border-radius:3px;}
+#login {overflow:hidden; color:white; margin-top:10px; padding:0 0 20px 0; background:white; border-radius:3px;}
 #login .header {line-height:57px;}
 #login button {float:right; height:50px; width:100%; text-align:left; background:#1CBBFF; margin-top:10px;}
 #login button .fa {float:right; height;auto; width:auto; padding:0; background:none; margin-top:3px; color:white;}
@@ -58,7 +61,8 @@ body, h1, h2, h3, h4, h5, h6 {font-family:"Open Sans",sans-serif;}
 .top-menu ul {margin-top:0;}
 .top-menu .logo {float:left;}
 .top-menu .top-menu-right {float:right; margin-top:21px;}
-.top-menu .top-menu-right ul li {/*height:50px;*/ float:left; padding:1px 10px;}
+.top-menu .top-menu-right > ul > li {float:left; padding:1px 10px;}
+.top-menu .top-menu-right .btn-group {margin-top:-3px;}
 .top-menu .top-menu-right ul li .glyphicon {color:#C1CCD1; font-size:25px;}
 .top-menu .top-menu-right ul li .glyphicon:hover {color:#a4b4bb; cursor:pointer;}
 .top-menu .top-menu-right ul li .account {padding: 8px; background: #C1CCD1; color:white; border-radius:25px; margin-top:-9px;}
@@ -68,7 +72,7 @@ body, h1, h2, h3, h4, h5, h6 {font-family:"Open Sans",sans-serif;}
 .nav-menu ul {margin:0;}
 .nav-menu ul li {float:left;}
 .nav-menu ul li a {position:relative; display:block; font-size:14px; font-weight: 400; padding: 16px 18px 15px; color: #BCC2CB; line-height:20px;}
-.nav-menu ul li a:hover {text-decoration:none; cursor:pointer;}
+.nav-menu ul li a:hover {text-decoration:none; cursor:pointer; background:#55616f; color:#f1f1f1;}
 .nav-menu ul li a .arrow {display:none; position:absolute; font-size:14px; right:15px; top:17px;
 height: auto; font-weight: 300; color:#666;}
 

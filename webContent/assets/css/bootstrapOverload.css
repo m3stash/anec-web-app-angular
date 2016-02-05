@@ -20,6 +20,8 @@ a, button, code, div, img, input, label, li, p, pre, select, span, svg, table, t
 .form-control {outline: 0!important;}
 .btn, .form-control {box-shadow: none!important;}
 .form-control.default:focus {border-color: #c2cad8}
+.dropdown-menu>li>a {cursor:pointer;}
+.dropdown-menu>li.selected a {background:#f5f5f5}
 
 /* select box */
 select.form-control {color:white; appearance:none; -moz-appearance:none; padding-right:20px;
@@ -28,9 +30,9 @@ select.form-control {color:white; appearance:none; -moz-appearance:none; padding
 select.form-control option {background:white; border:0; color:#93A2A9;}
 .glyphicon:hover {text-decoration:none;}
 
-/*@media (min-width: 768px){
-  .container {
-    width:100%;
-    margin:0!important;
-  }
-}*/
+/* color button */
+  /* primary */
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:visited, .open>.dropdown-toggle.btn-primary,
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus,
+.btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus,
+.open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {background-color:#32c5d2; border-color:#32c5d2;}
