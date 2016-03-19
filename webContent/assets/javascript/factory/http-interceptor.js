@@ -47,11 +47,10 @@ factory('httpInterceptor', function($q, $location, $rootScope) {
 
 			//si 401 => on ouvre la modale de login
 			if(rejection.status == '401'){
-        // $location.path("/login.html?url="+$location.url());
-				// console.clear();
-				return false;
+				var param = ''+$location.url();
+				console.log('------',param)
+				$location.path('/login').search({url: param});
 			}
-
 			return $q.reject(rejection);
 		}
 	};

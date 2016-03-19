@@ -1,0 +1,24 @@
+<div class="modale">
+  <form name="form" novalidate ng-submit="submit(form.$valid)">
+    <div class="modal-header">
+        <h4 class="modal-title">{{'modal.modalMgtModType.title.'+type | translate}}</h4>
+    </div>
+    <div class="modal-body">
+      <ul class="form">
+        <li>
+          <label for="form_type" class="required">Type:</label>
+          <input ng-model="formObj.type" ng-maxlength="20" name="type" id="form_type" class="form-control"
+            placeholder="{{'modal.modalMgtModType.placeholder.type' | translate}}" type="text" tabindex="1" required>
+          <div ng-messages="form.type.$error">
+              <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.error.required' | translate}}</div>
+              <div class="txt-error" ng-message="maxlength" ng-if="form.$submitted">{{'common.error.maxlength' | translate:'{ value: 10 }'}}</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit" ng-click="ok()" tabindex="3">{{'common.button.ok' | translate}}</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()" tabindex="4">{{'common.button.cancel' | translate}}</button>
+    </div>
+  </form>
+</div>

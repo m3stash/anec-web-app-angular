@@ -4,6 +4,16 @@ html, body {/*width:100%; height:100%;*/ box-sizing:border-box; background:#eff3
   font-family: "Open Sans";
   src: url('../fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype');
 }
+/* for delete yellow background in input chrome*/
+input:-webkit-autofill {
+    -webkit-text-fill-color: #444d58!important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s; color:#
+}
 body, h1, h2, h3, h4, h5, h6 {font-family:"Open Sans",sans-serif;}
 h1, h2, h3, h4, h5, h6 {color:#49b14b;}
 .glyphicon {cursor:pointer;}
@@ -22,14 +32,17 @@ h1, h2, h3, h4, h5, h6 {color:#49b14b;}
 @keyframes loop { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 /* login */
-#login {overflow:hidden; color:white; margin-top:10px; padding:0 0 20px 0; background:white; border-radius:3px;}
+.bgLogin {background:url('../images/rain.jpg') no-repeat; position:absolute; left:0; top:0; width:100%; height:100%;
+  -webkit-filter:blur(1px); -moz-filter:blur(1px); filter:blur(1px);
+  background-size:cover; -webkit-background-size:cover; -webkit-filter-background-size:cover;}
+#login {overflow:hidden; color:white; margin-top:10px; padding:0 0 20px 0; background:rgba(255,255,255, 0.8); border-radius:3px;}
 #login .header {line-height:57px;}
-#login button {float:right; height:50px; width:100%; text-align:left; background:#1CBBFF; margin-top:10px;}
-#login button .fa {float:right; height;auto; width:auto; padding:0; background:none; margin-top:3px; color:white;}
+#login button {float:right; height:50px; text-align:left; margin-top:10px; width:100%; text-align:center;}
 #login .ctn-input {padding:30px;}
+#login .ctn-input.error label, #login .ctn-input.error input {border-color:red}
 #login input {width:calc(100% - 45px); height:50px; border-radius:0 5px 5px 0; margin-bottom:20px; border-radius:0;
-	box-shadow:none; border:0; border-bottom:2px solid #e1e1e1;}
-#login .fa {color:grey; float:left; padding:16px; width:45px; font-size:16px;}
+	box-shadow:none; border:0; border-bottom:2px solid #444d58; font-size:16px;}
+#login .fa {color:grey; float:left; padding:16px; width:45px; font-size:16px; border-bottom:2px solid #444d58;}
 #login .block-right .ctn-input {padding:30px;}
 #login .block-right .ctn-input button {float:right; height:50px; width:100%; text-align:left; background:#FFA10D; border:0; margin-top:67px;}
 #login .block-right button a {color:white; text-decoration:none;}
@@ -44,13 +57,13 @@ h1, h2, h3, h4, h5, h6 {color:#49b14b;}
 .ctn-input .flat-button.fa {float:right; height;auto; width:auto; padding:0; background:none; margin-top:3px; color:white;}
 .ctn-input .flat-input {width:calc(100% - 45px); height:50px; border-radius:0 5px 5px 0; margin-bottom:20px; border-radius:0; box-shadow:none; border:0; border-bottom:2px solid #e1e1e1;}
 .ctn-input .flat-input.error {border-color:red;}
-.ctn-input .fa {color:grey; float:left; padding:16px; width:45px; font-size:16px;}
+.ctn-input .fa {color:grey; float:left; padding:16px; width:45px; font-size:16px; cursor:pointer;}
 .step .ctn-input .flat-input.error, .flat-input.reduct {width:50%; display:inline-block;}
 .step .ctn-input .error-message {display:inline-block; width: calc(50% - 71px); color:red;}
 
 /* header */
-.header {display:block; height:61px; margin-bottom:20px; /*line-height: 60px;*/ background: #1CBBFF; padding: 0 20px; overflow:hidden;}
-.header .title {float:left; font-size:17px; margin-top:5px; text-shadow:1px 1px 1px blue; color:white; width:calc(100% - 47px); text-align:center;}
+.header {display:block; height:61px; margin-bottom:20px; /*line-height: 60px;*/ background: #444d58; padding: 0 20px; overflow:hidden;}
+.header .title {float:left; font-size:17px; margin-top:5px; color:#BCC2CB; width:100%; text-align:center;}
 .header .ctn-angle {position:relative; float:right; width:47px;}
 .header .ctn-angle .fa {font-size:131px; position:absolute; z-index:10; top:-39px; left:0; color:white;}
 .header ul li {list-style-type:none; float:left; width:25%;}
@@ -107,7 +120,7 @@ height: auto; font-weight: 300; color:#666;}
 .ag-fresh .ag-header-cell {border:1px solid transparent; background:none;}
 .ag-fresh .ag-header-container {background:none;}
 .ag-fresh .ag-body {background:none;}
-.ag-fresh .ag-header-cell-label {padding:0; text-align:left;}
+.ag-fresh .ag-header-cell-label {text-align:left;}
 .ag-fresh .ag-header-container {border-bottom:1px solid #F2F5F8;}
 .ag-fresh .ag-root {border:0;}
 .ag-fresh .ag-cell-no-focus {border:0;}
@@ -115,3 +128,4 @@ height: auto; font-weight: 300; color:#666;}
 .ag-fresh .ag-body .ag-row-even.ag-row-level-0:first-child {border-top:0;}
 .ag-fresh .ag-row-selected {background-color:#f9f9f9!important;}
 .ag-header-cell-label span.title {font-weight:bold; color:#93a2a9;}
+.ag-header-cell.checkboxSel #agSortAsc, .ag-header-cell.checkboxSel #agSortDesc {display:none!important;}

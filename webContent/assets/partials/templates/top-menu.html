@@ -1,7 +1,7 @@
-<div class="top-menu" menu-top>
+<div class="top-menu">
   <div class="container">
     <div class="logo">
-      <a ng-href="#/main">
+      <a ng-href="/main">
         <img title="logo Anec" src="assets/images/logo.png" />
       </a>
     </div>
@@ -17,13 +17,16 @@
             </a>
             <ul uib-dropdown-menu="" aria-labelledby="simple-dropdown" class="dropdown-menu">
               <li class="ng-scope">
-                <a ng-href="#/mgt-module-type" class="ng-binding">{{'menu-top.modulesTypes' | translate}}</a>
+                <a ng-href="/mgt-module-type" class="ng-binding">{{'menu-top.modulesTypes' | translate}}</a>
               </li>
               <li>
-                <a ng-href="#/mgt-module" class="ng-binding">{{'menu-top.modules' | translate}}</a>
+                <a ng-href="/mgt-module" class="ng-binding">{{'menu-top.modules' | translate}}</a>
               </li>
               <li>
-                <a ng-href="#/mgt-users">{{'menu-top.users' | translate}}</a>
+                <a ng-href="/mgt-users">{{'menu-top.users' | translate}}</a>
+              </li>
+              <li>
+                <a ng-href="/mgt-customers">{{'menu-top.customers' | translate}}</a>
               </li>
             </ul>
           </span>

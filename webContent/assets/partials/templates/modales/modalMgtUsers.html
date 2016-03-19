@@ -1,0 +1,111 @@
+<div class="modale">
+  <form name="form" novalidate ng-submit="submit(form.$valid)">
+    <div class="modal-header">
+        <h4 class="modal-title">{{'modal.modalMgtUsr.title.'+type | translate}}</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12"><label class="required">Civility:</label></div>
+        <div class="col-md-12">
+          <div class="radio-inline">
+            <label><input type="radio" ng-model="formObj.civ" value="mr" name="civ" required>{{'common.civ.mr' | translate}}</label>
+          </div>
+          <div class="radio-inline">
+            <label><input type="radio" ng-model="formObj.civ" value="me" name="civ" required>{{'common.civ.me' | translate}}</label>
+          </div>
+          <div ng-messages="form.civ.$error">
+              <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.error.required' | translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-xs-6">
+          <label class="required" for="firstName">{{'modal.modalMgtUsr.firstName' | translate}}</label>
+          <input ng-model="formObj.firstName" ng-maxlength="20" name="firstName" id="firstName" class="form-control"
+            placeholder="{{'common.placeholder.firstName' | translate}}" type="text" tabindex="" required>
+          <div ng-messages="form.firstName.$error">
+              <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.error.required' | translate}}</div>
+              <div class="txt-error" ng-message="maxlength" ng-if="form.$submitted">{{'common.error.maxlength' | translate:'{ value: 30 }'}}</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xs-6">
+          <label class="required" for="lastName">{{'modal.modalMgtUsr.lastName' | translate}}</label>
+          <input ng-model="formObj.lastName" ng-maxlength="20" name="lastName" id="lastName" class="form-control"
+            placeholder="{{'common.placeholder.lastName' | translate}}" type="text" tabindex="" required>
+          <div ng-messages="form.lastName.$error">
+              <div class="txt-error" ng-message="required" ng-if="form.$submitted">{{'common.error.required' | translate}}</div>
+              <div class="txt-error" ng-message="maxlength" ng-if="form.$submitted">{{'common.error.maxlength' | translate:'{ value: 30 }'}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <H5>{{'modal.modalMgtUsr.contact' | translate}}</h5>
+          </div>
+        <div class="col-md-6">
+          <label >{{'modal.modalMgtUsr.telCode' | translate}}</label><br/>
+          <div class="col-md-6 col-xs-6">
+            <select-box list="listTelCode" default-value="{{'modal.modalMgtUsr.select' | translate}}" click="listTelCodeFn"
+             defaultSelected=""></select-box>
+          </div>
+           <div class="col-md-6 col-xs-6">
+              <input value="{{listTelCodeId}}" class="form-control"
+                placeholder="{{'common.placeholder.telCode' | translate}}" type="text" readonly>
+           </div>
+        </div>
+        <div class="col-md-6">
+          <label for="mobile">{{'modal.modalMgtUsr.mobile' | translate}}</label><br/>
+          <input ng-model="formObj.contact.mobile.number" ng-maxlength="20" name="mobile" id="mobile" class="form-control"
+            placeholder="{{'common.placeholder.mobile.number' | translate}}" type="text" tabindex="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label >{{'modal.modalMgtUsr.telCode' | translate}}</label><br/>
+          <div class="col-md-6 col-xs-6">
+            <select-box list="listTelCode2" default-value="{{'modal.modalMgtUsr.select' | translate}}" click="listTelCode2Fn"
+             defaultSelected=""></select-box>
+          </div>
+          <div class="col-md-6 col-xs-6">
+             <input value="{{listTelCodeId2}}" class="form-control"
+               placeholder="{{'common.placeholder.telCode' | translate}}" type="text" readonly>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="fix">{{'modal.modalMgtUsr.fix' | translate}}</label>
+          <input ng-model="formObj.contact.fix.number" ng-maxlength="20" name="fix" id="fix" class="form-control"
+            placeholder="{{'common.placeholder.fix.number' | translate}}" type="text" tabindex="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label >{{'modal.modalMgtUsr.telCode' | translate}}</label><br/>
+          <div class="col-md-6 col-xs-6">
+            <select-box list="listTelCode3" default-value="{{'modal.modalMgtUsr.select' | translate}}" click="listTelCode3Fn"
+             defaultSelected=""></select-box>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <input value="{{listTelCodeId3}}" class="form-control"
+              placeholder="{{'common.placeholder.telCode' | translate}}" type="text" readonly>
+           </div>
+        </div>
+        <div class="col-md-6">
+          <label for="fax">{{'modal.modalMgtUsr.fax' | translate}}</label>
+          <input ng-model="formObj.contact.fax.number" ng-maxlength="20" name="fax" id="fax" class="form-control"
+            placeholder="{{'common.placeholder.fax.number' | translate}}" type="text" tabindex="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="mobile">{{'modal.modalMgtUsr.email' | translate}}</label>
+          <input ng-model="formObj.contact.email" ng-maxlength="20" name="email" id="email" class="form-control"
+            placeholder="{{'common.placeholder.email' | translate}}" type="text" tabindex="">
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-primary" type="submit" ng-click="ok()" tabindex="">{{'common.button.ok' | translate}}</button>
+          <button class="btn btn-warning" type="button" ng-click="cancel()" tabindex="">{{'common.button.cancel' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>

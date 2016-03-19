@@ -9,25 +9,28 @@ var webapp = angular.module('webapp', [
   'cgNotify',
   'googlechart',
   'page-mgt-mod-type',
+  'page-mgt-users',
   'page-main'
 ])
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
 	  .when('/login', {
-	    templateUrl: 'assets/partials/login.html'
+      template: '<login></login>'
 	  })
     .when('/main', {
 	     template: '<main-page></main-page>'
 	  })
-    .when('/modulesByDistrict', {
-      templateUrl: 'assets/partials/modulesByDistrict.html'
-    })
     .when('/mgt-module-type', {
-      template: '<mgt-mod-type></mgt-mod-type>', reloadOnSearch: false
+      template: '<mgt-mod-type></mgt-mod-type>'
+    })
+    .when('/mgt-users', {
+      template: '<mgt-users></mgt-users>'
     })
     .otherwise({redirectTo: '/login'});
+    // use the HTML5 History API
+    $locationProvider.html5Mode(true);
 }])
-.config(['$translateProvider', '$httpProvider', function ($translateProvider, $httpProvider) {
+.config(['$translateProvider', '$httpProvider', '$locationProvider', function ($translateProvider, $httpProvider, $locationProvider) {
   if(_.isNull(localStorage.getItem('lang'))){
     localStorage.setItem('lang', window.navigator.userLanguage || window.navigator.language);
   }
@@ -37,7 +40,12 @@ var webapp = angular.module('webapp', [
 		prefix: 'assets/i18n/',
 		suffix: '.json'
 	})
-  // echape les failles xss possilbles
+  //for remove the '#' in url
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
+  // escape xss for traduction
   $translateProvider.useSanitizeValueStrategy('escape');
   // force data in body for delete methode
   $httpProvider.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };

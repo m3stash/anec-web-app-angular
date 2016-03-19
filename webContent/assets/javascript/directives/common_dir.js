@@ -1,48 +1,57 @@
 'use strict';
+
 angular.module('directives', [])
+.directive('ctnTop', function($route) {
+  return {
+    restrict:'E',
+    template: '<div ng-if="showMenuTop"><menu-top></menu-top><nav-menu></nav-menu><div>',
+    link: function(scope, ele, attr, ctrl){
+      scope.showMenuTop = true;
+       scope.$on('$routeChangeSuccess', function (param) {
+         if($route.current.$$route && $route.current.$$route.originalPath === "/login"){
+           scope.showMenuTop = false;
+         }else{
+           scope.showMenuTop = true;
+         }
+       });
+    }
+  };
+})
 .directive('login', function($http, $location) {
   return {
-    restrict:'A',
-    controller : function(){
-      this.loginObj = {};
-      this.loginForm = function(){
+    restrict:'E',
+    templateUrl: 'assets/partials/login.html',
+    controller: function(){
+      var thiz = this;
+      thiz.loginObj = {};
+      thiz.error = false;
+      thiz.loginForm = function(){
         $http.post('/rest-api/login',this.loginObj).then(function (response) {
-          localStorage.setItem('user', JSON.stringify(response.data.user));
-          localStorage.setItem('token', response.data.token);
-          $location.search({});
-          $location.path("/main");
+          if(response === false){
+            thiz.error = true;
+          }else{
+            thiz.error = false;
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('token', response.data.token);
+            console.log('ici',$location.$$search.url)
+            if(!_.isUndefined($location.$$search.url)){
+              $location.path($location.$$search.url);
+              $location.search({});
+            }else{
+              $location.search({});
+              $location.path("/main");
+            }
+          }
         }, function (error) {
           //error
+          console.log('err',error)
         });
       }
     },
-    controllerAs:"loginCtrl"
-  };
-})
-.directive('main', function($http) {
-  return {
-    restrict:'A',
-    controller : function(){
-      var thiz = this
-      var token = localStorage.getItem('token');
-      $http({
-        method: 'get',
-        url: '/rest-api/modules/read',
-        headers: {
-          "Authorization": "Bearer "+token
-        },
-        data: {
-          //"obj": "test"
-        }
-      }).then(function(response){
-        thiz.modules = response.data.modulesList;
-        //console.log(thiz.modules)
-      }, function (error) {
-        //console.log('error')
-        //error
-      });
-    },
-    controllerAs:"mainCtrl"
+    controllerAs:"loginCtrl",
+    link: function(scope, ele, attr, ctrl){
+
+    }
   };
 })
 .directive('contracts', function($http) {
@@ -58,8 +67,9 @@ angular.module('directives', [])
 })
 .directive('menuTop', function($http, $timeout, $route, $translate, $location) {
   return {
-    restrict:'A',
+    restrict:'E',
     controllerAs:"menuTopCtrl",
+    templateUrl: 'assets/partials/templates/top-menu.html',
     controller : function(){
       var thiz = this;
       var user = JSON.parse(localStorage.getItem('user'));
@@ -79,11 +89,16 @@ angular.module('directives', [])
       }
       thiz.listLang = [{id:"fr", value:"Français"},{id:"en", value:"English"}];
       thiz.logout = function(){
-        $http.get('/rest-api/logout').then(function(res){
+        var data = localStorage.getItem('user');
+        $http.post('/rest-api/logout', data).then(function(res){
           localStorage.removeItem('token');
+          localStorage.removeItem('user');
           $location.path('/login')
+          $route.reload();
         }, function(err){
-          //
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          $location.path('/login')
         });
       };
     }
@@ -93,7 +108,6 @@ angular.module('directives', [])
   return {
     restrict:'A',
     controller : function(){
-
       var token = localStorage.getItem('token');
       var thiz = this;
       this.moduleObj = {}
@@ -148,18 +162,6 @@ angular.module('directives', [])
     controllerAs:"modulesByDistrictCtrl"
   };
 })
-.directive('topMenu', function() {
-  return {
-    restrict:'E',
-    replace: true,
-    controller : function(){
-    },
-    templateUrl: 'assets/partials/templates/top-menu.html',
-    link: function(scope, ele, attr, ctrl){
-
-    }
-  }
-})
 .directive('navMenu', function() {
   return {
     restrict:'E',
@@ -182,7 +184,7 @@ angular.module('directives', [])
     }
   }
 })
-.directive('modalAddModType', function($uibModal, notify, glbFac) {
+.directive('modalMgtModType', function($uibModal, notify, glbFac) {
   return {
     restrict:'E',
     require: '^mgtModType',
@@ -200,7 +202,7 @@ angular.module('directives', [])
       var items = {};
       items.actionType = scope.actionType;
       scope.animationsEnabled = true;
-      var url = 'assets/partials/templates/modales/modalAddModType.html';
+      var url = 'assets/partials/templates/modales/modalMgtModType.html';
       if(scope.actionType === 'delete'){
         url = 'assets/partials/templates/modales/modalDeleteType.html';
       }
@@ -213,7 +215,7 @@ angular.module('directives', [])
           var modalInstance = $uibModal.open({
             animation: scope.animationsEnabled,
             templateUrl: url,
-            controller: 'modalAddModTypeCtrl',
+            controller: 'modalMgtModTypeCtrl',
             size: size,
             resolve: {
               items: function () {
@@ -233,19 +235,65 @@ angular.module('directives', [])
     }
   }
 })
+.directive('modalMgtUsers', function($uibModal, notify, glbFac) {
+  return {
+    restrict:'E',
+    require: '^mgtUsers',
+    template: '<button ng-click="gesUsr()" ng-disabled="{{condition}}" type="button"'+
+      'class="btn default">{{"button."+actionType | translate}}</button>',
+    scope: {
+      actionType: "@",
+      rows: "=",
+      condition: "@"
+    },
+    link: function(scope, ele, attr, ctrl){
+      var size = "";
+      var items = {};
+      items.actionType = scope.actionType;
+      scope.animationsEnabled = true;
+      var url = 'assets/partials/templates/modales/modalMgtUsers.html';
+      if(scope.actionType === 'delete'){
+        url = 'assets/partials/templates/modales/modalDeleteType.html';
+      }
+      scope.gesUsr = function(){
+        items.rows = ctrl.getRows();
+        items.idModule = scope.idModule;
+        var modalInstance = $uibModal.open({
+          animation: scope.animationsEnabled,
+          templateUrl: url,
+          controller: 'modalMgtUsersCtrl',
+          size: size,
+          resolve: {
+            items: function () {
+              return items;
+            }
+          }
+        });
+        modalInstance.result.then(function (cause) {
+          if(cause === 'save'){
+            ctrl.onRefreshAll();
+          }
+        }, function () {
+          //error
+        });
+
+      };
+    }
+  }
+})
 .directive('selectBox', function($timeout) {
   return {
     restrict:'E',
     scope: {
       list: "=",
-      defaultValue: "=",
+      defaultValue: "@",
       click: "=",
       defaultSelected: "="
     },
     template:
       '<div class="btn-group" uib-dropdown keyboard-nav>'+
         '<button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary" uib-dropdown-toggle>'+
-          '</span>{{value}} <span class="caret"></span>'+
+          '</span>{{value}}<span class="caret"></span>'+
         '</button>'+
         '<ul uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">'+
           '<li ng-class="{selected: item.id === itmId}" ng-repeat="item in sbList" ng-click="click(item.id); returnValue(item)" role="menuitem"><a>{{item.value}}</a></li>'+
@@ -256,10 +304,11 @@ angular.module('directives', [])
       scope.$on('$destroy',scope.$watch("list", function(oldVal,newVal){
         if(scope.list && scope.list.length > 0){
           //aray void but default val is display if defaultValue present
-          if(!_.isUndefined(scope.defaultValue)){
-            list = scope.list.unshift({id:null, value: scope.defaultValue});
+          if(!_.isUndefined(scope.defaultValue) && scope.defaultValue !== ""){
+            list = angular.copy(scope.list);
+            list.unshift({id:null, value: scope.defaultValue})
+            scope.sbList = list;
             scope.value = scope.defaultValue;
-            scope.sbList = scope.list;
           }else{
             scope.sbList = scope.list;
           }

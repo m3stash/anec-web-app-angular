@@ -38,18 +38,17 @@
 		<script src="assets/javascript/factory/ag-grid_conf.js"></script>
 		<script src="assets/javascript/factory/global-factory.js"></script>
 		<script src="assets/javascript/factory/resources.js"></script>
-		<!-- controllers -->
-		<script src="assets/javascript/controllers/mainCtrl.js"></script>
-		<!-- modales -->
-		<script src="assets/javascript/controllers/modales/modalAddModTypeCtrl.js"></script>
+		<!-- controllers modales -->
+		<script src="assets/javascript/controllers/modales/modalMgtModTypeCtrl.js"></script>
+		<script src="assets/javascript/controllers/modales/modalMgtUsersCtrl.js"></script>
 		<script src="assets/javascript/controllers/modales/modalDeleteCtrl.js"></script>
 		<!--directive-->
 		<script src="assets/javascript/directives/mgt-mod-type.js"></script>
 		<script src="assets/javascript/directives/main-page.js"></script>
+		<script src="assets/javascript/directives/mgt-users.js"></script>
 	</head>
-	<body>
-		<top-menu></top-menu>
-		<nav-menu></nav-menu>
+	<body class="{{bgLogin}}">
+		<ctn-top></ctn-top>
 		<div id="viewContent" class="container" ng-view></div>
 	</body>
 </html>

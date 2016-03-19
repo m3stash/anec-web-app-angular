@@ -13,33 +13,8 @@ angular.module('page-main', [])
       chart.options = {
         'legend': 'bottom'
       }
-      // chart.type = 'google.charts.Line';
-      // chart.data = {"cols": [
-      //     {id: "t", label: "Topping", type: "string"},
-      //     {id: "s", label: "Slices", type: "number"}
-      // ], "rows": [
-      //     {c: [
-      //           {v: "Mushrooms"},
-      //           {v: 3},
-      //     ]},
-      //     {c: [
-      //         {v: "Onions"},
-      //         {v: 3},
-      //     ]},
-      //     {c: [
-      //         {v: "Olives"},
-      //         {v: 31}
-      //     ]},
-      //     {c: [
-      //         {v: "Zucchini"},
-      //         {v: 1},
-      //     ]},
-      //     {c: [
-      //         {v: "Pepperoni"},
-      //         {v: 2},
-      //     ]}
-      // ]};
       chart.type = 'google.charts.Bar';
+      // chart.type = 'google.visualization.ColumnChart';
       chart.data = {
         "cols": [{
           id: "month",
